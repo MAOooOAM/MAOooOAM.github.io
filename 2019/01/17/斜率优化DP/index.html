@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="斜率优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=\min_{j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="斜率优化DP">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/斜率优化DP/index.html">
+<meta property="og:site_name" content="MAOoo">
+<meta property="og:description" content="斜率优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=\min_{j">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-17T14:50:58.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="斜率优化DP">
+<meta name="twitter:description" content="斜率优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=\min_{j">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MAOoo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/17/斜率优化DP/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>斜率优化DP | MAOoo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MAOoo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/斜率优化DP/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">斜率优化DP
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-17 21:54:41 / Modified: 22:50:58" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:41+08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/01/17/斜率优化DP/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/17/斜率优化DP/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="斜率优化DP思想"><a href="#斜率优化DP思想" class="headerlink" title="斜率优化DP思想"></a>斜率优化DP思想</h2><p>对于状态转移公式满足如下条件的动态规划</p>
+<script type="math/tex; mode=display">dp[i]=\min_{j<i}\{f[j]-p[i]*g[j]\}+q[i]</script><p>其中$~f~$和$~g~$均可线性时间内求出，且$~p~$和$~g~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。考虑$~dp[i]~$从$~j&lt;k~$的两种转移，$~j~$比$~k~$优当且仅当</p>
+<script type="math/tex; mode=display">\begin{aligned}
+f[j]-p[i]*g[j]  &<f[k]-p[i]*g[k]                \\
+p[i]            &<\frac{f[k]-f[j]}{g[k]-g[j]}   \\
+\end{aligned}</script><p>让$~f~$和$~g~$分别表示平面直角坐标系的纵坐标和横坐标，则不等式右边即为经过点$~P_j~$与$~P_k~$的直线的斜率$~K(P_j,~P_k)~$。于是$~j~$比$~k~$优当且仅当$~p[i]&lt; K(P_j,~P_k)~$。同理当$~j&gt;k~$时，$~j~$比$~k~$优当且仅当$~p[i]&gt;K(P_k,~P_j)~$。于是对于$~dp[i]~$，点集$~{P_i=(g[i],~f[i])}~$的下凸包中，满足过点$~P_j~$且斜率为$~p[i]~$的直线不经过凸包内部的点$~P_j~$即为最优转移点。由于$~P_j~$的横坐标$~g[j]~$与斜率$~p[i]~$均单调递增，则凸包和斜率的转移可以用单调队列维护，总复杂度为线性复杂度$~O(n)~$。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h3><p><strong>维护凸包要去重点！维护凸包要去重点！维护凸包要去重点！重要的事情说三遍！</strong></p>
+<p>如过存在重点则在凸包加新点时有可能改变凸包性质。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="HDU3507"><a href="#HDU3507" class="headerlink" title="HDU3507"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3507" target="_blank" rel="noopener">HDU3507</a></h3><h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h4><p>给定一个长度为$~N~$的数列$~C[1],~C[2],~\dots,~C[N]~$，和自然数$~M~$对于连续子列$~C[l,~r]~$，它的花费定义为$~cost(l,r)=\sum_{i=l}^r(C[i])^2+M~$。要求找到整个数列的一种划分，使得总花费$~\sum{cost(l,r)}~$最小，平求出这个最小花费。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h4><p>动态规划，用$~dp[i]~$表示对于数列$~C[1],~C[2],~\dots,~C[i]~$的最小花费答案，记前缀和$~pre[i]=\sum_{j=1}^iC[j]~$，则有状态转移式</p>
+<script type="math/tex; mode=display">\begin{aligned}
+dp[i]   &=\min_{j< i}\left\{dp[j]+(pre[i]-pre[j])^2+M\right\}                   \\
+        &=\min_{j< i}\left\{dp[j]+pre[j]^2-2*pre[i]*pre[j]\right\}+M+pre[i]^2   \\
+\end{aligned}</script><p>这样的时间复杂度为$~O(N^2)~$，显然会$~\text{tle}~$。但注意到$~pre~$满足单调递增性质，令$~{P_i=(pre[i],~dp[i]+pre[i]^2)}~$，则维护下凸壳，时间复杂度可以优化为$~O(n)~$。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">19</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> pre[maxn], dp[maxn], x[maxn], y[maxn];</span><br><span class="line"><span class="keyword">int</span> que[maxn], tail;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> c;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line">            <span class="keyword">if</span> (c) pre[i] = pre[i - <span class="number">1</span>] + c;</span><br><span class="line">            <span class="keyword">else</span> --i, --n;</span><br><span class="line">        &#125;</span><br><span class="line">        x[que[tail = <span class="number">1</span>] = <span class="number">1</span>] = pre[<span class="number">1</span>] &lt;&lt; <span class="number">1</span>;</span><br><span class="line">        y[<span class="number">1</span>] = (dp[<span class="number">1</span>] = pre[<span class="number">1</span>] * pre[<span class="number">1</span>] + m) + pre[<span class="number">1</span>] * pre[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">while</span> (j ^ tail &amp;&amp; y[que[j + <span class="number">1</span>]] - y[que[j]] &lt; (x[que[j + <span class="number">1</span>]] - x[que[j]]) * pre[i]) ++j;</span><br><span class="line">            x[i] = pre[i] &lt;&lt; <span class="number">1</span>;</span><br><span class="line">            y[i] = (dp[i] = y[que[j]] - pre[i] * x[que[j]] + m + pre[i] * pre[i]) + pre[i] * pre[i];</span><br><span class="line">            <span class="keyword">while</span> (tail &amp;&amp; (y[i] - y[que[tail]]) * (x[i] - x[que[tail - <span class="number">1</span>]]) &lt; (y[i] - y[que[tail - <span class="number">1</span>]]) * (x[i] - x[que[tail]])) --tail;</span><br><span class="line">            que[++tail] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dp[n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HDU3045"><a href="#HDU3045" class="headerlink" title="HDU3045"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3045" target="_blank" rel="noopener">HDU3045</a></h3><h4 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h4><p>给定$~N~$个正整数，将其化为若干个不小于$~T~$的集合$~S~$，每个集合的花费定义为$~cost(S)=\sum{S}-|S|*\min{S}~$，求出最小的总花费。</p>
+<h4 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><strong>题解</strong></h4><p>贪心，对这$~N~$个数排序，则最优的划分方式必为连续的子段划分。此时每一个子集的最小值即为子集的第一个数，最小花费可以转化为最大化$~\sum(S-|S|*\min{S})~$。动态规划，记$~dp[i]~$为排好序后前$~i~$个数所对应的上式的值，则有状态转移方式</p>
+<script type="math/tex; mode=display">\begin{aligned}
+dp[i]   &=\max_{T\leq{j}\leq{i-T}}\left\{dp[j]+a[j+1]*(i-j)\right\}         \\
+        &=\max_{T\leq{j}\leq{i-T}}\left\{dp[j]-a[j+1]*j+i*a[j+1]\right\}    \\
+\end{aligned}</script><p>这时令点集$~{P_i=(a[i+1],~a[i+1]\cdot i-dp[i])}~$，那么对于$~j&lt; k~$，$~j~$比$~k~$优当且仅当$~i&lt; K(P_j,~P_k)~$，对于$~j&gt;k~$，$~j~$比$~k~$优当且仅当$~i&gt;K(P_k,~P_j)~$。所以维护下凸壳即可。<strong>这题会出现重点，必须用大于等于或小于等于判断斜率！</strong></p>
+<p><strong>代码</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">19</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a[maxn], dp[maxn], sum;</span><br><span class="line"><span class="keyword">int</span> que[maxn], tail;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> X(i) a[que[i] + 1]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> Y(i) (X(i) * que[i] - dp[que[i]])</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, t;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; t) &#123;</span><br><span class="line">        sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">            sum += a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        sort(a + <span class="number">1</span>, a + n + <span class="number">1</span>);</span><br><span class="line">        tail = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">while</span> (j ^ tail &amp;&amp; (Y(j + <span class="number">1</span>) - Y(j)) &lt;= (X(j + <span class="number">1</span>) - X(j)) * i) ++j;</span><br><span class="line">            dp[i] = i * X(j) - Y(j);</span><br><span class="line">            <span class="keyword">int</span> temp = i - t + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (temp &lt; t) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> x = a[temp + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> y = x * temp - dp[temp];</span><br><span class="line">            <span class="keyword">while</span> (tail &amp;&amp; (y - Y(tail)) * (x - X(tail - <span class="number">1</span>)) &lt;= (y - Y(tail - <span class="number">1</span>)) * (x - X(tail))) --tail;</span><br><span class="line">            j = min(j, tail);</span><br><span class="line">            que[++tail] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sum - dp[n] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/17/队列优化DP/" rel="next" title="队列优化DP">
+                <i class="fa fa-chevron-left"></i> 队列优化DP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/17/区间DP与平行四边形优化/" rel="prev" title="区间DP与平行四边形优化">
+                区间DP与平行四边形优化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MAOoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#斜率优化DP思想"><span class="nav-number">1.</span> <span class="nav-text">斜率优化DP思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">1.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU3507"><span class="nav-number">2.1.</span> <span class="nav-text">HDU3507</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目大意"><span class="nav-number">2.1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题解"><span class="nav-number">2.1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">2.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU3045"><span class="nav-number">2.2.</span> <span class="nav-text">HDU3045</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目大意-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题解-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MAOoo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>

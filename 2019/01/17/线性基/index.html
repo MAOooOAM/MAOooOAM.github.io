@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="线性基问题对于非负整数区间$~[0,~2^n)~$，可以按二进制$~01~$表示映射到域$~\Bbb{Z}_2~$上的$~n~$维向量空间$~\Bbb{Z}_2^n~$。记上述的映射为$~f:[0,~2^n)\to\Bbb{Z}_2^n,~x\mapsto v~$，这里$~v~$是$~x~$在二进制下的$~01~$表示，显然$~f~$是双射。之后的内容中，对于向量$~v\in\Bbb{Z}_2^n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线性基">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/线性基/index.html">
+<meta property="og:site_name" content="MAOoo">
+<meta property="og:description" content="线性基问题对于非负整数区间$~[0,~2^n)~$，可以按二进制$~01~$表示映射到域$~\Bbb{Z}_2~$上的$~n~$维向量空间$~\Bbb{Z}_2^n~$。记上述的映射为$~f:[0,~2^n)\to\Bbb{Z}_2^n,~x\mapsto v~$，这里$~v~$是$~x~$在二进制下的$~01~$表示，显然$~f~$是双射。之后的内容中，对于向量$~v\in\Bbb{Z}_2^n">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-17T14:10:11.978Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线性基">
+<meta name="twitter:description" content="线性基问题对于非负整数区间$~[0,~2^n)~$，可以按二进制$~01~$表示映射到域$~\Bbb{Z}_2~$上的$~n~$维向量空间$~\Bbb{Z}_2^n~$。记上述的映射为$~f:[0,~2^n)\to\Bbb{Z}_2^n,~x\mapsto v~$，这里$~v~$是$~x~$在二进制下的$~01~$表示，显然$~f~$是双射。之后的内容中，对于向量$~v\in\Bbb{Z}_2^n">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MAOoo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/17/线性基/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>线性基 | MAOoo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MAOoo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/线性基/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">线性基
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-17 15:46:42 / Modified: 22:10:11" itemprop="dateCreated datePublished" datetime="2019-01-17T15:46:42+08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/01/17/线性基/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/17/线性基/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="线性基问题"><a href="#线性基问题" class="headerlink" title="线性基问题"></a>线性基问题</h2><p>对于非负整数区间$~[0,~2^n)~$，可以按二进制$~01~$表示映射到域$~\Bbb{Z}_2~$上的$~n~$维向量空间$~\Bbb{Z}_2^n~$。记上述的映射为$~f:[0,~2^n)\to\Bbb{Z}_2^n,~x\mapsto v~$，这里$~v~$是$~x~$在二进制下的$~01~$表示，显然$~f~$是双射。之后的内容中，对于向量$~v\in\Bbb{Z}_2^n~$，都用$~f^{-1}(v)\in[0,~2^n)~$来表示。那么对于若干整数的$~\text{xor}~$运算问题，则转化为向量空间$~\Bbb{Z}_2^n~$上的加法运算问题，通常称为<strong>线性基问题</strong>。</p>
+<h3 id="线性基"><a href="#线性基" class="headerlink" title="线性基"></a><strong>线性基</strong></h3><p>向量空间$~\Bbb{Z}_2^n~$上任意$~n~$个线性无关的向量，称作该向量空间上的一组<strong>线性基</strong>。显然$~1,~2,~\dots,~2^{n-1}~$是$~\Bbb{Z}_2^n~$的一组线性基，称作<strong>标准线性基</strong>。且向量空间$~\Bbb{Z}_2^n~$的任意一个子空间$~V~$必同构于向量空间$~\Bbb{Z}_2^m,~0\leq m\leq n~$，于是$~{\mid V\mid}=2^m~$。</p>
+<h3 id="最小生成子空间"><a href="#最小生成子空间" class="headerlink" title="最小生成子空间"></a><strong>最小生成子空间</strong></h3><p>对于向量空间$~\Bbb{Z}_2^n~$的一个子集$~A={a_1,~a_2,~\dots,~a_m}~$，子空间$~V~$称作$~A~$在$~\Bbb{Z}_2^n~$上的最小生成子空间，当且仅当$~A\subseteq V\subseteq~\Bbb{Z}_2^n~$，且对于$~\Bbb{Z}_2^n~$的所有子空间$~W~$满足：如果$~A\subseteq W~$，则必有$~V\subseteq W~$。如果$~a_1,~a_2,~\dots,~a_m~$线性无关，则它们构成$~V~$的一组线性基。于是有推论：对于$~A~$的最小生成子空间$~V~$，满足$~\dim V\leq{\mid A\mid}~$。</p>
+<h3 id="空间的扩张"><a href="#空间的扩张" class="headerlink" title="空间的扩张"></a><strong>空间的扩张</strong></h3><p>对于向量空间$~\Bbb{Z}_2^n~$的子空间$~V~$和向量$~a~$，定义$~V(a)={a+b:b\in V}\cup V~$。显然$~V(a)~$是包含$~V~$和$~a~$的最小空间，称$~V(a)~$是$~V~$的扩张。如果$~a\in V~$，则显然$~V(a)=V~$，称作<strong>平凡扩张</strong>；否则称作<strong>不平凡扩张</strong>，且$~\dim V(a)=\dim V+1~$。对于不平凡扩张，设$~b_1,~b_2,~\dots,~b_{\dim V}~$是$~V~$的一组线性基，因为$~a\notin V~$，$~a~$无法被$~b_1,~b_2,~\dots,~b_{\dim V}~$线性表出，所以$~b_1,~b_2,~\dots,~b_{\dim V},~a~$线性无关，它们是$~V(a)~$的一组线性基。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="存储"><a href="#存储" class="headerlink" title="存储"></a><strong>存储</strong></h3><p>对于任意线性无关组，显然它的最小生成子空间是唯一的。所以可以用$~\text{vector}~$来储存这个线性无关组来表示一个线性空间。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vec</span> &#123;</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;T&gt; base;</span><br><span class="line">	Vec() &#123;&#125;;</span><br><span class="line">	Vec(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;T&gt;&amp; vec): base(vec) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;base.clear();&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> base.size();&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="扩张"><a href="#扩张" class="headerlink" title="扩张"></a><strong>扩张</strong></h3><p>自行理解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(T e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) e = <span class="built_in">std</span>::min(e, e ^ v);</span><br><span class="line">	<span class="keyword">if</span> (e) base.push_back(e);</span><br><span class="line">	<span class="keyword">return</span> e;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">const</span> Vec&amp; vec)</span> </span>&#123;<span class="keyword">for</span> (<span class="keyword">auto</span> v : vec.base) push(v);&#125;</span><br><span class="line">Vec <span class="keyword">operator</span> + (<span class="keyword">const</span> Vec&amp; vec) <span class="keyword">const</span> &#123;</span><br><span class="line">	<span class="function">Vec <span class="title">ret</span><span class="params">(base)</span></span>;</span><br><span class="line">	ret.join(vec);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="最值"><a href="#最值" class="headerlink" title="最值"></a><strong>最值</strong></h3><p>最小值为非$~0~$最小值，其余自行理解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">min</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	T ret = base.front();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) ret = <span class="built_in">std</span>::min(ret, v);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">T <span class="title">max</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	T ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) ret = <span class="built_in">std</span>::max(ret, ret ^ v);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a><strong>标准化</strong></h3><p>自行理解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">std</span>::sort(base.begin(), base.end());</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ base.size(); ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; ~j; --j)</span><br><span class="line">			base[i] = <span class="built_in">std</span>::min(base[i], base[i] ^ base[j]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="有序查找"><a href="#有序查找" class="headerlink" title="有序查找"></a><strong>有序查找</strong></h3><p>从$~0~$开始，需要标准化，其余自行理解。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">find_by_order</span><span class="params">(T k)</span> </span>&#123;</span><br><span class="line">	T ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp; base.size(); ++i) <span class="keyword">if</span> (k &amp; T(<span class="number">1</span>) &lt;&lt; i) ret ^= base[i];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vec</span> &#123;</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;T&gt; base;</span><br><span class="line">	Vec() &#123;&#125;;</span><br><span class="line">	Vec(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;T&gt;&amp; vec): base(vec) &#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;base.clear();&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> base.size();&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(T e)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) e = <span class="built_in">std</span>::min(e, e ^ v);</span><br><span class="line">		<span class="keyword">if</span> (e) base.push_back(e);</span><br><span class="line">		<span class="keyword">return</span> e;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">const</span> Vec&amp; vec)</span> </span>&#123;<span class="keyword">for</span> (<span class="keyword">auto</span> v : vec.base) push(v);&#125;</span><br><span class="line">	Vec <span class="keyword">operator</span> + (<span class="keyword">const</span> Vec&amp; vec) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="function">Vec <span class="title">ret</span><span class="params">(base)</span></span>;</span><br><span class="line">		ret.join(vec);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">min</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		T ret = base.front();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) ret = <span class="built_in">std</span>::min(ret, v);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">max</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		T ret = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) ret = <span class="built_in">std</span>::max(ret, ret ^ v);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">std</span>::sort(base.begin(), base.end());</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ base.size(); ++i)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; ~j; --j)</span><br><span class="line">				base[i] = <span class="built_in">std</span>::min(base[i], base[i] ^ base[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">find_by_order</span><span class="params">(T k)</span> </span>&#123;</span><br><span class="line">		T ret = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp; base.size(); ++i) <span class="keyword">if</span> (k &amp; T(<span class="number">1</span>) &lt;&lt; i) ret ^= base[i];</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="CF1101G"><a href="#CF1101G" class="headerlink" title="CF1101G"></a><a href="https://codeforces.com/problemset/problem/1101/G" target="_blank" rel="noopener">CF1101G</a></h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">19</span>;</span><br><span class="line"><span class="keyword">int</span> c[maxn];</span><br><span class="line">pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; seg[maxn];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vec</span> &#123;</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; base;</span><br><span class="line">	Vec() &#123;base.clear();&#125;</span><br><span class="line">	Vec(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; vec) &#123;base = vec;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> e)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) e = min(e, e ^ v);</span><br><span class="line">		<span class="keyword">if</span> (e) base.push_back(e);</span><br><span class="line">		<span class="keyword">return</span> e;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">max</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) ret = <span class="built_in">std</span>::max(ret, ret ^ v);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">const</span> Vec&amp; vec)</span> </span>&#123;<span class="keyword">for</span> (<span class="keyword">auto</span> v : vec.base) push(v);&#125;</span><br><span class="line">	Vec <span class="keyword">operator</span> + (<span class="keyword">const</span> Vec&amp; vec) <span class="keyword">const</span> &#123;</span><br><span class="line">		<span class="function">Vec <span class="title">ret</span><span class="params">(base)</span></span>;</span><br><span class="line">		ret.join(vec);</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;base.clear();&#125;</span><br><span class="line">&#125;res[maxn], vec[maxn], tmp;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdq</span><span class="params">(<span class="keyword">auto</span>&amp; que,<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> i : que) res[i].push(c[l]);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> m = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">	tmp.clear();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &gt;= l; --i) &#123;</span><br><span class="line">		tmp.push(c[i]);</span><br><span class="line">		vec[i] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	tmp.clear();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = m + <span class="number">1</span>; i &lt;= r; ++i) &#123;</span><br><span class="line">		tmp.push(c[i]);</span><br><span class="line">		vec[i] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; left, right;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> i : que) &#123;</span><br><span class="line">		<span class="keyword">if</span> (seg[i].second &lt;= m)</span><br><span class="line">			left.push_back(i);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (seg[i].first &gt; m)</span><br><span class="line">			right.push_back(i);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			res[i] = vec[seg[i].first] + vec[seg[i].second];</span><br><span class="line">	&#125;</span><br><span class="line">	que.clear();</span><br><span class="line">	cdq(left, l, m);</span><br><span class="line">	cdq(right, m + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; c[i];</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; que(q);</span><br><span class="line">	iota(que.begin(), que.end(), <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ q; ++i) <span class="built_in">cin</span> &gt;&gt; seg[i].first &gt;&gt; seg[i].second;</span><br><span class="line">	cdq(que, <span class="number">1</span>, n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ q; ++i) <span class="built_in">cout</span> &lt;&lt; res[i].max() &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CF1100F"><a href="#CF1100F" class="headerlink" title="CF1100F"></a><a href="https://codeforces.com/problemset/problem/1100/F" target="_blank" rel="noopener">CF1100F</a></h3><h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a(n), base;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a.front();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i], a[i] ^= a[i - <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">if</span> (!a.back()) <span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> e : a) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) e = min(e, e ^ v);</span><br><span class="line">		<span class="keyword">if</span> (e) base.push_back(e);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; base.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HDU3949"><a href="#HDU3949" class="headerlink" title="HDU3949"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3949" target="_blank" rel="noopener">HDU3949</a></h3><h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> all(o) o.begin(), o.end()</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Vec</span> &#123;</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;T&gt; base;</span><br><span class="line">	Vec() &#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> base.size();&#125;</span><br><span class="line">	<span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(T e)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) e = <span class="built_in">std</span>::min(e, e ^ v);</span><br><span class="line">		<span class="keyword">if</span> (e) base.pb(e);</span><br><span class="line">		<span class="keyword">return</span> e;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">std</span>::sort(all(base));</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ base.size(); ++i)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i - <span class="number">1</span>; ~j; --j)</span><br><span class="line">				base[i] = <span class="built_in">std</span>::min(base[i], base[i] ^ base[j]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function">T <span class="title">find_by_rank</span><span class="params">(T k)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (k &gt;= T(<span class="number">1</span>) &lt;&lt; base.size()) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">		T ret = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ base.size(); ++i) <span class="keyword">if</span> (k &amp; T(<span class="number">1</span>) &lt;&lt; i) ret ^= base[i];</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cas = <span class="number">1</span>; cas &lt;= t; ++cas) &#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">		Vec&lt;ll&gt; vec;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) &#123;</span><br><span class="line">			ll a;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">			vec.push(a);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> q;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">		vec.sort();</span><br><span class="line">		ll flag = (n == vec.size()) - <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="string">"Case #"</span> &lt;&lt; cas &lt;&lt; <span class="string">":\n"</span>;</span><br><span class="line">		<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">			ll k;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; k;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; vec.find_by_rank(k + flag) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/17/Good Bye 2018 (TBC)/" rel="prev" title="Good Bye 2018 (TBC)">
+                Good Bye 2018 (TBC) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MAOoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性基问题"><span class="nav-number">1.</span> <span class="nav-text">线性基问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线性基"><span class="nav-number">1.1.</span> <span class="nav-text">线性基</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成子空间"><span class="nav-number">1.2.</span> <span class="nav-text">最小生成子空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间的扩张"><span class="nav-number">1.3.</span> <span class="nav-text">空间的扩张</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码实现"><span class="nav-number">2.</span> <span class="nav-text">代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#存储"><span class="nav-number">2.1.</span> <span class="nav-text">存储</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩张"><span class="nav-number">2.2.</span> <span class="nav-text">扩张</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最值"><span class="nav-number">2.3.</span> <span class="nav-text">最值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准化"><span class="nav-number">2.4.</span> <span class="nav-text">标准化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有序查找"><span class="nav-number">2.5.</span> <span class="nav-text">有序查找</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板"><span class="nav-number">3.</span> <span class="nav-text">模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">4.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1101G"><span class="nav-number">4.1.</span> <span class="nav-text">CF1101G</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">4.1.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1100F"><span class="nav-number">4.2.</span> <span class="nav-text">CF1100F</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU3949"><span class="nav-number">4.3.</span> <span class="nav-text">HDU3949</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码-2"><span class="nav-number">4.3.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MAOoo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
