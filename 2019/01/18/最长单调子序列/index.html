@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="队列优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]">
+  <meta name="description" content="最长上升子序列朴素算法动态规划，令$~dp[i]~$表示以$~a[i]~$结尾的最长上升子序列长度，则有状态转移式 dp[i]=\max_{j&amp;lt; i,~a[j]&amp;lt; a[i]}{dp[j]}+1这样的时间复杂度显然是$~O(n^2)~$。 1234567891011int lis(int a[], int size) &amp;#123;	for (int i = 0; i ^ size; ++i) &amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="队列优化DP">
-<meta property="og:url" content="http://yoursite.com/2019/01/17/队列优化DP/index.html">
+<meta property="og:title" content="最长单调子序列">
+<meta property="og:url" content="http://yoursite.com/2019/01/18/最长单调子序列/index.html">
 <meta property="og:site_name" content="MAOoo">
-<meta property="og:description" content="队列优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]">
+<meta property="og:description" content="最长上升子序列朴素算法动态规划，令$~dp[i]~$表示以$~a[i]~$结尾的最长上升子序列长度，则有状态转移式 dp[i]=\max_{j&amp;lt; i,~a[j]&amp;lt; a[i]}{dp[j]}+1这样的时间复杂度显然是$~O(n^2)~$。 1234567891011int lis(int a[], int size) &amp;#123;	for (int i = 0; i ^ size; ++i) &amp;#1">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-17T14:10:03.617Z">
+<meta property="og:updated_time" content="2019-01-18T06:49:04.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="队列优化DP">
-<meta name="twitter:description" content="队列优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]">
+<meta name="twitter:title" content="最长单调子序列">
+<meta name="twitter:description" content="最长上升子序列朴素算法动态规划，令$~dp[i]~$表示以$~a[i]~$结尾的最长上升子序列长度，则有状态转移式 dp[i]=\max_{j&amp;lt; i,~a[j]&amp;lt; a[i]}{dp[j]}+1这样的时间复杂度显然是$~O(n^2)~$。 1234567891011int lis(int a[], int size) &amp;#123;	for (int i = 0; i ^ size; ++i) &amp;#1">
 
 
 
@@ -115,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/17/队列优化DP/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/18/最长单调子序列/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>队列优化DP | MAOoo</title>
+  <title>最长单调子序列 | MAOoo</title>
   
 
 
@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/队列优化DP/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/18/最长单调子序列/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MAOoo">
@@ -324,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">队列优化DP
+          <h1 class="post-title" itemprop="name headline">最长单调子序列
 
               
             
@@ -350,7 +350,7 @@
                 
               
 
-              <time title="Post created: 2019-01-17 21:54:38 / Updated at: 22:10:03" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:38+08:00">2019-01-17</time>
+              <time title="Post created: 2019-01-18 14:48:52 / Updated at: 14:49:04" itemprop="dateCreated datePublished" datetime="2019-01-18T14:48:52+08:00">2019-01-18</time>
             
 
             
@@ -390,8 +390,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
             
-                <a href="/2019/01/17/队列优化DP/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/17/队列优化DP/" itemprop="commentCount"></span>
+                <a href="/2019/01/18/最长单调子序列/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/18/最长单调子序列/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -419,37 +419,18 @@
       
 
       
-        <h2 id="队列优化DP思想"><a href="#队列优化DP思想" class="headerlink" title="队列优化DP思想"></a>队列优化DP思想</h2><p>对于状态转移公式满足如下条件的动态规划</p>
-<script type="math/tex; mode=display">dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]</script><p>其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]~$的单调递增性质，可以用一个叫做<strong>单调队列</strong>的数据结构来维护区间的最值。</p>
-<h3 id="单调队列的性质"><a href="#单调队列的性质" class="headerlink" title="单调队列的性质"></a><strong>单调队列的性质</strong></h3><ol>
-<li>可以用双端队列或者双指针数组实现，内部的任意元素$~que[i]~$表示$~f~$的角标。</li>
-<li>角标有序储存，即$~que[i]&lt;que[j],~\forall~i&lt;j~$。</li>
-<li>角标对应的数组值单调，即$~f[que[i]]~$单调递增或者单调递减。</li>
-</ol>
-<h3 id="单调队列的操作（单调递减队列维护区间最大值）"><a href="#单调队列的操作（单调递减队列维护区间最大值）" class="headerlink" title="单调队列的操作（单调递减队列维护区间最大值）"></a><strong>单调队列的操作（单调递减队列维护区间最大值）</strong></h3><ol>
-<li>每次更新区间时，从小到大考虑新加入的角标$~now~$，将所有队列$~que~$中满足$~que[cmp]&lt;que[now]~$的元素$~cmp~$从队列$~que~$中移除。由于单调队列的性质，只需要让$~now~$与队列$~que~$的尾部元素$~last~$比较即可。</li>
-<li>将$~now~$放入队列$~que~$尾部，经过上一个操作，单调队列性质依然保持。</li>
-<li>将队列$~que~$头部所有不在区间$~[\alpha,~\beta]~$的元素$~head~$从队列$~que~$中移除。由于区间$~[\alpha,~\beta]~$的单调递增性质，单调队列性质依然保持，且此时$~\max{f[i]}=f[que[head]]~$。</li>
-</ol>
-<h3 id="复杂度计算"><a href="#复杂度计算" class="headerlink" title="复杂度计算"></a><strong>复杂度计算</strong></h3><p>每个角标$~i~$至多被放入队列$~que~$或者从队列$~que~$中移除一次，所以是线性复杂度$~O(n)~$。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="HDU3401"><a href="#HDU3401" class="headerlink" title="HDU3401"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3401" target="_blank" rel="noopener">HDU3401</a></h3><h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h4><p>炒股，一共$~T~$天，第$~i~$天股票的买价是$~ap[i]~$、最多可以买$~as[i]~$股，卖价是$~bp[i]~$、最多可以卖$~bs[i]~$股，且每两次交易之间相隔必须大于$~W~$天，最大屯股量为$~maxp~$，问最后的最大收益。</p>
-<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h4><p>动态规划，记$~dp[i][j]~$表示在第$~i~$天还剩下$~j~$股的最大收益，则有$~3~$种状态更新</p>
-<script type="math/tex; mode=display">dp[i][j]=\max\begin{cases}
-dp[i-1][j]              &\text{null}                        \\
-dp[i-w-1][j-k]-ap[i]*k  &\text{$k\leq\min(j,~as[i])$}       \\
-dp[i-w-1][j+k]+bp[i]*k  &\text{$k\leq\min(maxp-j~,bs[i])$}  \\
-\end{cases}</script><p>这样的时间复杂度为$~O(T\cdot maxp^2)~$，显然会$~\text{TLE}~$。但观察$~dp[i][j]~$的第二种状态更新，有</p>
-<script type="math/tex; mode=display">\begin{aligned}
-dp[i][j]    &=\max\alpha[l]-ap[i]*j     \\
-\alpha[l]   &=dp[i-w-1][l]+ap[i]*[l]    \\
-l           &\in[\max(0,~j-as[i]),~j]   \\
-\end{aligned}</script><p>第三种状态更新同理</p>
-<script type="math/tex; mode=display">\begin{aligned}
-dp[i][j]    &=\max\beta[l]-bp[i]*j          \\
-\beta[l]    &=dp[i-w-1][l]+bp[i]*[l]        \\
-l           &\in[j,~\min(maxp,~j+bs[i])]    \\
-\end{aligned}</script><p>于是可以用单调队列来维护$~\max(\alpha,\beta)~$。这样对于每个$~dp[i][j]~$状态转移的平均复杂度为$~O(1)~$，总时间复杂度为$~O(T\cdot maxp)~$。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">11</span>;</span><br><span class="line"><span class="keyword">int</span> ap[maxn], bp[maxn], as[maxn], bs[maxn], temp[maxn], dp[maxn &lt;&lt; <span class="number">1</span>][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n, maxp, w;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; maxp &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; ap[i] &gt;&gt; bp[i] &gt;&gt; as[i] &gt;&gt; bs[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= w; ++i) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= maxp; ++j) dp[i][j] = -inf;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) dp[i + w][j] = dp[i + w - <span class="number">1</span>][j];</span><br><span class="line">            que.clear();</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) &#123;</span><br><span class="line">                temp[j] = dp[i - <span class="number">1</span>][j] + ap[i] * j;</span><br><span class="line">                <span class="keyword">while</span> (!que.empty() &amp;&amp; temp[que.back()] &lt; temp[j]) que.pop_back();</span><br><span class="line">                que.push_back(j);</span><br><span class="line">                <span class="keyword">while</span> (que.front() &lt; j - as[i]) que.pop_front();</span><br><span class="line">                dp[i + w][j] = max(dp[i + w][j], temp[que.front()] - ap[i] * j);</span><br><span class="line">            &#125;</span><br><span class="line">            que.clear();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) temp[j] = dp[i - <span class="number">1</span>][j] + bp[i] * j;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ bs[i]; ++j) &#123;</span><br><span class="line">                <span class="keyword">while</span> (!que.empty() &amp;&amp; temp[que.back()] &lt; temp[j]) que.pop_back();</span><br><span class="line">                que.push_back(j);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j + bs[i] &lt;= maxp) &#123;</span><br><span class="line">                    <span class="keyword">while</span> (!que.empty() &amp;&amp; temp[que.back()] &lt; temp[j + bs[i]]) que.pop_back();</span><br><span class="line">                    que.push_back(j + bs[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">while</span> (que.front() &lt; j) que.pop_front();</span><br><span class="line">                dp[i + w][j] = max(dp[i + w][j], temp[que.front()] - bp[i] * j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dp[n + w][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="最长上升子序列"><a href="#最长上升子序列" class="headerlink" title="最长上升子序列"></a>最长上升子序列</h2><h3 id="朴素算法"><a href="#朴素算法" class="headerlink" title="朴素算法"></a><strong>朴素算法</strong></h3><p>动态规划，令$~dp[i]~$表示以$~a[i]~$结尾的最长上升子序列长度，则有状态转移式</p>
+<script type="math/tex; mode=display">dp[i]=\max_{j< i,~a[j]< a[i]}{dp[j]}+1</script><p>这样的时间复杂度显然是$~O(n^2)~$。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lis</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ size; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ i; ++j)</span><br><span class="line">			<span class="keyword">if</span> (a[i] &gt; a[j])</span><br><span class="line">				dp[i] = max(dp[i], dp[j]);</span><br><span class="line">		++dp[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) ret = max(ret, dp[i]);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a><strong>优化算法</strong></h3><p>用数组$~pos[i]~$记录长度为$~i~$的$~\text{LIS}~$的最后一个角标，那么在上述状态转移过程中，如果$~i~$的第$~1~$个最优转移点是$~j~$，必有$~a[pos[j]]]&lt; a[i]~$，且$~pos[j+1]~$不存在或者$~pos[j+1]\geq a[i]~$。这时令$~pos[dp[i]=j+1]=i~$。且这样维护的$~pos~$必然满足$~a[pos[i]]~$严格单增。于是只需要在$~pos~$上转移，答案为$~pos~$的最终大小。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lis</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> size)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ size; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> j = ret;</span><br><span class="line">		<span class="keyword">while</span> (j &amp;&amp; a[i] &gt;= a[pos[j]]) --j;</span><br><span class="line">		pos[++j] = i;</span><br><span class="line">		ret = max(ret, j);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的时间复杂度依然是$~O(n^2)~$但是相对于上一个算法有了不少的的剪枝。同时由于$~a[pos[i]]~$的单调性上面代码中的$~\text{while}~$部分可以用二分算法优化，这样总时间复杂度就降为$~O(n\log n)~$。同时可以对每次的状态转移记忆化，这样可以得到一个最长上升子序列。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; lis(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; a) &#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ret, to(a.size);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ a.size(); ++i) &#123;</span><br><span class="line">		<span class="keyword">auto</span> ite = lower_bound(ret.begin(), ret.end(), i, [&amp;](<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;<span class="keyword">return</span> a[x] &lt; a[y];&#125;);</span><br><span class="line">		<span class="keyword">if</span> (ite == ret.begin()) to[i] = i;</span><br><span class="line">		<span class="keyword">else</span> to[i] = *(ite - <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span> (ite == ret.end()) ret.push_back(i);</span><br><span class="line">		<span class="keyword">else</span> *ite = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = ret.size() - <span class="number">2</span>; ~i; --i) ret[i] = to[ret[i + <span class="number">1</span>]];</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Dilworth定理"><a href="#Dilworth定理" class="headerlink" title="Dilworth定理"></a>Dilworth定理</h2><p>数列$~{a_n}~$的最长上升子序列（非严格单增）最小划分数等于最长下降子序列（严格单减）长度。</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a><strong>证明</strong></h3><p>设数列$~{a_n}~$的最长上升子序列（非严格单增）最小划分数为$~k~$，最长下降子序列（严格单减）长度为$~m~$。任取一条最长下降子序列$~b_1,~b_2,~\dots,~b_m~$，则它们之中任意两个必然不在同一最长上升子序列划分中，所以必有$~k\geq m~$。<br>将数列$~{a_n}~$翻转，此时最长上升子序列（严格单增）长度为$~m~$，下面构造下降子序列（非严格单减）的$~m~$划分。在计算$~m~$的过程中，数组$~pos~$的每一次更新都必然满足$~pos[j]~$不存在或者$~a_{pos[j]}\geq a_i~$，那么$~pos[j]~$的更新链恰好构成$~{a_n}~$的一条非严格单减子序列。而$~{\mid pos\mid}=m~$，也就是说$~pos~$有$~m~$条不交的更新链，它们恰好构成$~{a_n}~$的一个下降子序列（严格单增）的$~m~$划分。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>用角标记录，返回最长严格单增子序列和非严格单减子序列划分。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">exlis</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; lis, to(a.size());</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; lds;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ a.size(); ++i) &#123;</span><br><span class="line">		<span class="keyword">auto</span> idx = lower_bound(lis.begin(), lis.end(), i, [&amp;](<span class="keyword">int</span> x, <span class="keyword">int</span> y) &#123;<span class="keyword">return</span> a[x] &lt; a[y];&#125;) - lis.begin();</span><br><span class="line">		<span class="keyword">if</span> (idx) to[i] = lis[idx - <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">else</span> to[i] = i;</span><br><span class="line">		<span class="keyword">if</span> (idx == lis.size()) &#123;</span><br><span class="line">			lis.push_back(i);</span><br><span class="line">			lds.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">1</span>, i));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			lis[idx] = i;</span><br><span class="line">			lds[idx].push_back(i);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = lis.size() - <span class="number">2</span>; ~i; --i) lis[i] = to[lis[i + <span class="number">1</span>]];</span><br><span class="line">	<span class="keyword">return</span> make_pair(lis, lds);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="CF1097E"><a href="#CF1097E" class="headerlink" title="CF1097E"></a><a href="https://codeforces.com/problemset/problem/1097/E" target="_blank" rel="noopener">CF1097E</a></h3>
       
     </div>
 
@@ -479,8 +460,8 @@ l           &\in[j,~\min(maxp,~j+bs[i])]    \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/17/Good Bye 2018 (TBC)/" rel="next" title="Good Bye 2018 (TBC)">
-                <i class="fa fa-chevron-left"></i> Good Bye 2018 (TBC)
+              <a href="/2019/01/17/Hello 2019 (TBC)/" rel="next" title="Hello 2019 (TBC)">
+                <i class="fa fa-chevron-left"></i> Hello 2019 (TBC)
               </a>
             
           </div>
@@ -488,10 +469,6 @@ l           &\in[j,~\min(maxp,~j+bs[i])]    \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/17/斜率优化DP/" rel="prev" title="斜率优化DP">
-                斜率优化DP <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -630,7 +607,7 @@ l           &\in[j,~\min(maxp,~j+bs[i])]    \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#队列优化DP思想"><span class="nav-number">1.</span> <span class="nav-text">队列优化DP思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单调队列的性质"><span class="nav-number">1.1.</span> <span class="nav-text">单调队列的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单调队列的操作（单调递减队列维护区间最大值）"><span class="nav-number">1.2.</span> <span class="nav-text">单调队列的操作（单调递减队列维护区间最大值）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度计算"><span class="nav-number">1.3.</span> <span class="nav-text">复杂度计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HDU3401"><span class="nav-number">2.1.</span> <span class="nav-text">HDU3401</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目大意"><span class="nav-number">2.1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#题解"><span class="nav-number">2.1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">2.1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最长上升子序列"><span class="nav-number">1.</span> <span class="nav-text">最长上升子序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#朴素算法"><span class="nav-number">1.1.</span> <span class="nav-text">朴素算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化算法"><span class="nav-number">1.2.</span> <span class="nav-text">优化算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dilworth定理"><span class="nav-number">2.</span> <span class="nav-text">Dilworth定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">2.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板"><span class="nav-number">3.</span> <span class="nav-text">模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">4.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CF1097E"><span class="nav-number">4.1.</span> <span class="nav-text">CF1097E</span></a></li></ol></li></ol></div>
             
 
           </div>
