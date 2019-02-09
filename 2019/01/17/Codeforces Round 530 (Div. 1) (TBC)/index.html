@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Codeforces Round #530 (Div. 1) A. Sum in the tree题目大意有一颗非负点权树，根的深度为$~1~$。给出根到所有奇数深度的点的链上的点权值之和$~s_u=\sum_{v\in L(1,~u)}a_v,~2\nmid dep_u~$。输出最小的可能的点权之和$~\sum_{i=1}^{n}a_i~$或不存在。 题解对于偶数度数的点的$~s_u~$值，取所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round 530 (Div. 1) (TBC)">
+<meta property="og:url" content="http://yoursite.com/2019/01/17/Codeforces Round 530 (Div. 1) (TBC)/index.html">
+<meta property="og:site_name" content="MAOoo">
+<meta property="og:description" content="Codeforces Round #530 (Div. 1) A. Sum in the tree题目大意有一颗非负点权树，根的深度为$~1~$。给出根到所有奇数深度的点的链上的点权值之和$~s_u=\sum_{v\in L(1,~u)}a_v,~2\nmid dep_u~$。输出最小的可能的点权之和$~\sum_{i=1}^{n}a_i~$或不存在。 题解对于偶数度数的点的$~s_u~$值，取所">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-07T13:04:08.724Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Round 530 (Div. 1) (TBC)">
+<meta name="twitter:description" content="Codeforces Round #530 (Div. 1) A. Sum in the tree题目大意有一颗非负点权树，根的深度为$~1~$。给出根到所有奇数深度的点的链上的点权值之和$~s_u=\sum_{v\in L(1,~u)}a_v,~2\nmid dep_u~$。输出最小的可能的点权之和$~\sum_{i=1}^{n}a_i~$或不存在。 题解对于偶数度数的点的$~s_u~$值，取所">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MAOoo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/17/Codeforces Round 530 (Div. 1) (TBC)/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Codeforces Round 530 (Div. 1) (TBC) | MAOoo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MAOoo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/Codeforces Round 530 (Div. 1) (TBC)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces Round 530 (Div. 1) (TBC)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-01-17 22:07:58" itemprop="dateCreated datePublished" datetime="2019-01-17T22:07:58+08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-02-07 21:04:08" itemprop="dateModified" datetime="2019-02-07T21:04:08+08:00">2019-02-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/01/17/Codeforces Round 530 (Div. 1) (TBC)/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/01/17/Codeforces Round 530 (Div. 1) (TBC)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://codeforces.com/contest/1098" target="_blank" rel="noopener">Codeforces Round #530 (Div. 1)</a></p>
+<h2 id="A-Sum-in-the-tree"><a href="#A-Sum-in-the-tree" class="headerlink" title="A. Sum in the tree"></a>A. Sum in the tree</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>有一颗非负点权树，根的深度为$~1~$。给出根到所有奇数深度的点的链上的点权值之和$~s_u=\sum_{v\in L(1,~u)}a_v,~2\nmid dep_u~$。输出最小的可能的点权之和$~\sum_{i=1}^{n}a_i~$或不存在。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>对于偶数度数的点的$~s_u~$值，取所有儿子的最大值，再和它的父亲比较合法性即可。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; son(n + <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; p(n + <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; s(n + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">		son[p[i]].push_back(i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; s[i];</span><br><span class="line">		<span class="keyword">if</span> (~s[i] &amp;&amp; i ^ <span class="number">1</span> &amp;&amp; s[i] &lt; s[p[p[i]]])</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">	que.push(<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (!que.empty()) &#123;</span><br><span class="line">		<span class="keyword">int</span> u = que.front();</span><br><span class="line">		que.pop();</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : son[u]) que.push(v);</span><br><span class="line">		<span class="keyword">if</span> (!~s[u]) &#123;</span><br><span class="line">			s[u] = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> v : son[u]) s[u] = min(s[u], s[v]);</span><br><span class="line">			<span class="keyword">if</span> (s[u] == <span class="number">0x3f3f3f3f3f3f3f3f</span>) s[u] = s[p[u]];</span><br><span class="line">		&#125;</span><br><span class="line">		res += s[u] - s[p[u]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Nice-table"><a href="#B-Nice-table" class="headerlink" title="B. Nice table"></a>B. Nice table</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给一个由$~\text{ATCG}~$组成的字母矩阵，输出一个同样大小的的字母矩阵满足所有$~2\times2~$均由$~\text{ATCG}~$组成，且使的两矩阵尽量相同。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>对于任意的合法矩阵，若第$~1~$行的字母超过$~2~$个，则不难推断出每列均由$~2~$个字母组成且奇偶性相同的列所用的字母组成一样。于是合法矩阵必满足每行（或列）均由$~2~$个字母组成，且相同的行（或列）所用的字母组成一样。枚举头$~2~$个字母组成的所有情况即可。考验代码能力。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; ch&#123;<span class="string">'A'</span>, <span class="string">'T'</span>, <span class="string">'C'</span>, <span class="string">'G'</span>&#125;;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; p(<span class="number">4</span>);</span><br><span class="line">	iota(p.begin(), p.end(), <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="built_in">string</span> res, str, tmp(n * m, <span class="string">'#'</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n * m; ++i) &#123;</span><br><span class="line">		<span class="keyword">char</span> ch;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; ch;</span><br><span class="line">		str += ch;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> same = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">do</span> &#123;</span><br><span class="line">		<span class="keyword">int</span> tot = <span class="number">0</span>, cnt[<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) &#123;</span><br><span class="line">			cnt[<span class="number">0</span>] = cnt[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ m; ++j) <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k ^ <span class="number">2</span>; ++k)</span><br><span class="line">				<span class="keyword">if</span> (str[i * m + j] == ch[p[(i &amp; <span class="number">1</span>) &lt;&lt; <span class="number">1</span> ^ k]]) ++cnt[(j ^ k) &amp; <span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span> (cnt[<span class="number">0</span>] &lt; cnt[<span class="number">1</span>]) <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ m; ++j)</span><br><span class="line">				tmp[i * m + j] = ch[p[(i &amp; <span class="number">1</span>) &lt;&lt; <span class="number">1</span> ^ j &amp; <span class="number">1</span> ^ <span class="number">1</span>]];</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ m; ++j)</span><br><span class="line">				tmp[i * m + j] = ch[p[(i &amp; <span class="number">1</span>) &lt;&lt; <span class="number">1</span> ^ j &amp; <span class="number">1</span>]];</span><br><span class="line">			tot += max(cnt[<span class="number">0</span>], cnt[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (same &lt; tot) &#123;</span><br><span class="line">			same = tot;</span><br><span class="line">			res = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">		tot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ m; ++j) &#123;</span><br><span class="line">			cnt[<span class="number">0</span>] = cnt[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k ^ <span class="number">2</span>; ++k)</span><br><span class="line">				<span class="keyword">if</span> (str[i * m + j] == ch[p[(j &amp; <span class="number">1</span>) &lt;&lt; <span class="number">1</span> ^ k]]) ++cnt[(i ^ k) &amp; <span class="number">1</span>];</span><br><span class="line">			<span class="keyword">if</span> (cnt[<span class="number">0</span>] &lt; cnt[<span class="number">1</span>]) <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i)</span><br><span class="line">				tmp[i * m + j] = ch[p[(j &amp; <span class="number">1</span>) &lt;&lt; <span class="number">1</span> ^ i &amp; <span class="number">1</span> ^ <span class="number">1</span>]];</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i)</span><br><span class="line">				tmp[i * m + j] = ch[p[(j &amp; <span class="number">1</span>) &lt;&lt; <span class="number">1</span> ^ i &amp; <span class="number">1</span>]];</span><br><span class="line">			tot += max(cnt[<span class="number">0</span>], cnt[<span class="number">1</span>]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (same &lt; tot) &#123;</span><br><span class="line">			same = tot;</span><br><span class="line">			res = tmp;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">while</span> (next_permutation(p.begin(), p.end()));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ m; ++j) <span class="built_in">cout</span> &lt;&lt; res[i * m + j];</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-Construct-a-tree"><a href="#C-Construct-a-tree" class="headerlink" title="C. Construct a tree"></a>C. Construct a tree</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给定两个数$~n~$和$~s~$，输出一个大小为$~n~$的树满足所有子树的大小之和为$~s~$或不存在，若存在输出的树必须满足最大分叉$~k~$尽量小。<br>数据范围$~2\leq n\leq10^5,~1\leq s\leq10^{10}~$。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>考虑所有节点$~u~$对于$~s~$的贡献，当且仅当子树的根$~v~$为$~u~$的祖先时，$~u~$才会对答案贡献$~1~$。所以$~s=\sum_{i=1}^{n}dep_i\in[2n-1,~\frac{n(n+1)}{2}]~$。对于$~k~$叉树，$~s~$值的下限随着$~k~$增大减小。所以考虑二分，可以得出最小的$~k~$值。先构造出最小的$~k-1~$叉树，然后移动深的点即可。时间复杂度为$~O(n\log n)~$。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> num[maxn], lim[maxn], dep[maxn], sta[maxn], son[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> s;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; s;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1L</span>L * n * (n + <span class="number">1</span>) &lt; s &lt;&lt; <span class="number">1</span> || n &lt;&lt; <span class="number">1</span> &gt; s + <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">1L</span>L * n * (n + <span class="number">1</span>) == s &lt;&lt; <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i ^ n; ++i) <span class="built_in">cout</span> &lt;&lt; <span class="string">' '</span> &lt;&lt; i;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> l = <span class="number">1</span>, r = n - <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (r - l ^ <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> m = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> rem = n - <span class="number">1</span>, cnt = <span class="number">1</span>, cal = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; rem; ++i) &#123;</span><br><span class="line">			cnt *= m;</span><br><span class="line">			<span class="keyword">if</span> (rem &lt; cnt) cal += rem * i, rem = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span> cal += cnt * i, rem -= cnt;</span><br><span class="line">		&#125;</span><br><span class="line">		cal &gt; s ? (l = m) : (r = m);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> right = r;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> flr = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, tot = <span class="number">0</span>; tot ^ n; ++i, flr *= l) &#123;</span><br><span class="line">		<span class="keyword">if</span> (tot + flr &gt; n) num[i] = n - tot, tot = n;</span><br><span class="line">		<span class="keyword">else</span> num[i] = flr, tot += flr;</span><br><span class="line">	&#125;</span><br><span class="line">	lim[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; <span class="number">1L</span>L * lim[i] * r &lt; n &lt;&lt; <span class="number">1</span>; ++i) lim[i + <span class="number">1</span>] = lim[i] * r;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (r = <span class="number">1</span>; num[r]; ++r) cnt += <span class="number">1L</span>L * r * num[r];</span><br><span class="line">	l = <span class="number">2</span>;</span><br><span class="line">	cnt -= s;</span><br><span class="line">	<span class="keyword">while</span> (cnt) &#123;</span><br><span class="line">		<span class="keyword">if</span> (num[l] == lim[l]) ++l;</span><br><span class="line">		<span class="keyword">if</span> (!num[r]) --r;</span><br><span class="line">		<span class="keyword">if</span> (cnt &lt; r - l) &#123;</span><br><span class="line">			--num[r];</span><br><span class="line">			++num[r - cnt];</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		--num[r];</span><br><span class="line">		++num[l];</span><br><span class="line">		cnt += l - r;</span><br><span class="line">	&#125;</span><br><span class="line">	sta[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, d = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		dep[i] = d;</span><br><span class="line">		<span class="keyword">if</span> (!--num[d]) sta[++d] = i + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i ^ n; ++i) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; sta[dep[i] - <span class="number">1</span>] &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">		<span class="keyword">if</span> (++son[sta[dep[i] - <span class="number">1</span>]] == right) ++sta[dep[i] - <span class="number">1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; sta[dep[n] - <span class="number">1</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Eels"><a href="#D-Eels" class="headerlink" title="D. Eels"></a>D. Eels</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p><del>大鱼吃小鱼，小鱼吃虾米。</del>鱼缸里如果有$~n~$条鱼，则会发生$~n-1~$次生死$~\text{solo}~$，最终一人吃鸡。小鱼被大鱼吃掉后质量也送给了大鱼，类似于球球大作战。定义质量为$~a\leq b~$的两条鱼生死$~\text{solo}~$是危险的，如果$~a\leq b\leq2a~$。一个鱼缸的危险值定义为最多可能发生的危险$~\text{solo}~$次数。最开始鱼缸为空，每次加一条或者减一条质量为$~x~$的鱼，输出每次的危险值。<br>数据范围$~1\leq q\leq5\cdot10^5,~1\leq x\leq10^9~$。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>对所有鱼的质量升序得到$~a_1,~a_2,~\dots,~a_n~$。定义如果$~a_i&gt;2\sum_{j&lt; i}a_j~$，则称它为肥鱼（算上第一只$~a_1~$）。设当前鱼缸有$~k~$只肥鱼，则下面证明危险值为$~n-k~$：</p>
+<ol>
+<li>对于肥鱼，它一定不会在危险$~\text{solo}~$中作为大鱼出现，所以危险值的上限为$~n-k~$。</li>
+<li>在每次选择最小的两只鱼$~\text{solo}~$，这样危险$~\text{solo}~$的总次数为$~n-k~$。<br>所以现在对于每次操作，算出当前的$~k~$值即可。考虑区间$~[1,~2),~[2,~4),~\dots,~[2^m,~2^{m+1}),~\dots~$，显然每个区间至多一只肥鱼。那么用$~\text{multiset}~$来维护每个区间的鱼，这样每次操作就能在$~O(\log q\log x)~$内算出$~k~$值。总时间复杂度为$~O(q\log q\log x)~$。</li>
+</ol>
+<p>注意数据范围过大，可能需要$~\text{fastIO}~$。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">multiset</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; seg[<span class="number">32</span>];</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> sum[<span class="number">32</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">int</span> q, cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">		<span class="keyword">char</span> op;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> x;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; op &gt;&gt; x;</span><br><span class="line">		<span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; x; i &lt;&lt;= <span class="number">1</span>, ++idx);</span><br><span class="line">		<span class="keyword">if</span> (op == <span class="string">'+'</span>) &#123;</span><br><span class="line">			seg[idx].insert(x);</span><br><span class="line">			sum[idx] += x;</span><br><span class="line">			++cnt;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			seg[idx].erase(seg[idx].find(x));</span><br><span class="line">			sum[idx] -= x;</span><br><span class="line">			--cnt;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> res = cnt;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> tot = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ <span class="number">32</span>; tot += sum[i++])</span><br><span class="line">			<span class="keyword">if</span> (sum[i] &amp;&amp; *(seg[i].begin()) &gt; tot &lt;&lt; <span class="number">1</span>) --res;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/17/Codeforces Round 527 (Div. 3) (TBC)/" rel="next" title="Codeforces Round 527 (Div. 3) (TBC)">
+                <i class="fa fa-chevron-left"></i> Codeforces Round 527 (Div. 3) (TBC)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/17/Codeforces Round 530 (Div. 2)/" rel="prev" title="Codeforces Round 530 (Div. 2)">
+                Codeforces Round 530 (Div. 2) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MAOoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Sum-in-the-tree"><span class="nav-number">1.</span> <span class="nav-text">A. Sum in the tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Nice-table"><span class="nav-number">2.</span> <span class="nav-text">B. Nice table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Construct-a-tree"><span class="nav-number">3.</span> <span class="nav-text">C. Construct a tree</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Eels"><span class="nav-number">4.</span> <span class="nav-text">D. Eels</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MAOoo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
