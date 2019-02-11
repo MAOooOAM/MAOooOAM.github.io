@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Codeforces Global Round 1 A. Parity题目大意问一个$~k~$位$~b~$进制数的奇偶性。 题解水题。 代码1234567891011121314151617#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	int b, k, a;	cin &amp;gt;&amp;gt; b &amp;gt;&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Global Round 1">
+<meta property="og:url" content="http://yoursite.com/2019/02/11/Codeforces Global Round 1/index.html">
+<meta property="og:site_name" content="MAOoo">
+<meta property="og:description" content="Codeforces Global Round 1 A. Parity题目大意问一个$~k~$位$~b~$进制数的奇偶性。 题解水题。 代码1234567891011121314151617#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	int b, k, a;	cin &amp;gt;&amp;gt; b &amp;gt;&amp;gt;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-11T15:32:49.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Global Round 1">
+<meta name="twitter:description" content="Codeforces Global Round 1 A. Parity题目大意问一个$~k~$位$~b~$进制数的奇偶性。 题解水题。 代码1234567891011121314151617#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	int b, k, a;	cin &amp;gt;&amp;gt; b &amp;gt;&amp;gt;">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MAOoo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/11/Codeforces Global Round 1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Codeforces Global Round 1 | MAOoo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MAOoo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/Codeforces Global Round 1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Codeforces Global Round 1
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-02-11 23:16:30 / Updated at: 23:32:49" itemprop="dateCreated datePublished" datetime="2019-02-11T23:16:30+08:00">2019-02-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/02/11/Codeforces Global Round 1/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/02/11/Codeforces Global Round 1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://codeforces.com/contest/1110" target="_blank" rel="noopener">Codeforces Global Round 1</a></p>
+<h2 id="A-Parity"><a href="#A-Parity" class="headerlink" title="A. Parity"></a>A. Parity</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>问一个$~k~$位$~b~$进制数的奇偶性。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> b, k, a;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; b &gt;&gt; k;</span><br><span class="line">	b &amp;= <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (--k) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">		res ^= a &amp; <span class="number">1</span> &amp; b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">	res ^= a &amp; <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (res) <span class="built_in">cout</span> &lt;&lt; <span class="string">"odd"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"even"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Tape"><a href="#B-Tape" class="headerlink" title="B. Tape"></a>B. Tape</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>要求使用$~k~$个区间覆盖$~n~$个点，输出区间长度总和的最小值。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。贪心。差分序列排序即可。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m, k;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; b(n), d(n, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; in : b) <span class="built_in">cin</span> &gt;&gt; in;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ n; ++i) d[i] = b[i] - b[i - <span class="number">1</span>] - <span class="number">1</span>;</span><br><span class="line">	sort(d.begin(), d.end());</span><br><span class="line">	<span class="keyword">int</span> res = b.back() - b.front() + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n - k + <span class="number">1</span>; i ^ n; ++i) res -= d[i];</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-Meaningless-Operations"><a href="#C-Meaningless-Operations" class="headerlink" title="C. Meaningless Operations"></a>C. Meaningless Operations</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>定义$~f(a)=\max{\gcd(a\oplus b,~a\odot b)\mid0&lt; b&lt; a}~$其中$~\oplus~$和$~\odot~$分别是位运算中的异或$~\text{xor}~$和与$~\text{and}~$。一共$~q~$次询问，输出对应的$~f(a)~$。<br>数据范围$~1\leq q\leq10^3,~2\leq a\leq2^{25}-1~$。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>可以发现将$~a~$二进制表示后，如果不全为$~1~$，则$~f(a)~$即为全为$~1~$的数值（取$~b~$为$~a~$的补位）。否则$~f(a)~$为$~a~$的最大非$~a~$因子。具体证明过程可自行考虑。那么只需要预处理所有$~2^n-1~$即可。用$~\text{map}~$储存预处理数值并用$~\text{__builtin}~$优化位运算，总时间复杂度为$~O(\sqrt{a}+q\log a)~$。当然也可以打表后用数组储存答案，时间复杂度可以优化至$~O(q)~$。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; res;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= <span class="number">25</span>; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = (<span class="number">1</span> &lt;&lt; i) - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">3</span>, k = <span class="built_in">sqrt</span>(x + <span class="number">0.1</span>); j &lt;= k; ++j) <span class="keyword">if</span> (!(x % j)) &#123;</span><br><span class="line">			res[x] = x / j;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (res.find(x) == res.end()) res[x] = <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> a;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">		<span class="keyword">int</span> x = (<span class="number">1</span> &lt;&lt; <span class="number">32</span> - __builtin_clz(a)) - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (x ^ a) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; res[x] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Jongmah"><a href="#D-Jongmah" class="headerlink" title="D. Jongmah"></a>D. Jongmah</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>麻将模拟，问最多能凑出多少副顺子或者刻子。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>动态规划。每个数字如果作为顺子计算，那么只有$~3~$种位置供选择。而若某一位置上这个数字作为顺子出现的次数大于$~2~$，那么对于$~3k~$个一样的顺子，可以化为$~3k~$个刻子。那么对于每一个数字，它前$~2~$个数字的状态总数则是$~3\times3=9~$种，每次转移要计算$~3~$次，这样总时间复杂度为$~O(3^3m)~$。可以用滚动数组优化空间。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cnt(m, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">while</span> (n--) &#123;</span><br><span class="line">		<span class="keyword">int</span> a;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">		++cnt[--a];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> dp[<span class="number">2</span>][<span class="number">3</span>][<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ m; ++i) &#123;</span><br><span class="line">		<span class="built_in">memset</span>(dp[i &amp; <span class="number">1</span> ^ <span class="number">1</span>], <span class="number">0</span>, <span class="number">9</span> * <span class="keyword">sizeof</span> (<span class="keyword">int</span>));</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ <span class="number">3</span>; ++j) <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k ^ <span class="number">3</span>; ++k) <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l ^ <span class="number">3</span>; ++l) </span><br><span class="line">			<span class="keyword">if</span> (j + k + l &lt;= cnt[i])</span><br><span class="line">				dp[i &amp; <span class="number">1</span> ^ <span class="number">1</span>][k][l] = max(dp[i &amp; <span class="number">1</span> ^ <span class="number">1</span>][k][l], dp[i &amp; <span class="number">1</span>][j][k] + l + (cnt[i] - j - k - l) / <span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; dp[m &amp; <span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="E-Magic-Stones"><a href="#E-Magic-Stones" class="headerlink" title="E. Magic Stones"></a>E. Magic Stones</h2><h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>对于一个长度为$~n~$的序列，可以对非端点元素如下操作：将$~c_i~$变为$~c_{i+1}+c_{i-1}-c_i~$。现给定两个序列$~c~$和$~t~$，问$~c~$能否经过若干次操作变成$~t~$。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>考虑差分序列，不难发现每次操作则是交换差分序列相邻的两个元素。只需要将差分序列排序比较即可。</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a(n), b(n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; in : a) <span class="built_in">cin</span> &gt;&gt; in;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; in : b) <span class="built_in">cin</span> &gt;&gt; in;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">1</span>; i; --i) a[i] -= a[i - <span class="number">1</span>], b[i] -= b[i - <span class="number">1</span>];</span><br><span class="line">	sort(a.begin() + <span class="number">1</span>, a.end());</span><br><span class="line">	sort(b.begin() + <span class="number">1</span>, b.end());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; (a == b ? <span class="string">"Yes"</span> : <span class="string">"No"</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/11/CodeCraft-19 and Codeforces Round 537 (Div. 2)/" rel="next" title="CodeCraft-19 and Codeforces Round">
+                <i class="fa fa-chevron-left"></i> CodeCraft-19 and Codeforces Round
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/12/2019 Wannafly Winter Camp Day1 Div1 (TBC)/" rel="prev" title="2019 Wannafly Winter Camp Day1 Div1">
+                2019 Wannafly Winter Camp Day1 Div1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MAOoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Parity"><span class="nav-number">1.</span> <span class="nav-text">A. Parity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tape"><span class="nav-number">2.</span> <span class="nav-text">B. Tape</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Meaningless-Operations"><span class="nav-number">3.</span> <span class="nav-text">C. Meaningless Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Jongmah"><span class="nav-number">4.</span> <span class="nav-text">D. Jongmah</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Magic-Stones"><span class="nav-number">5.</span> <span class="nav-text">E. Magic Stones</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-4"><span class="nav-number">5.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-4"><span class="nav-number">5.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MAOoo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>

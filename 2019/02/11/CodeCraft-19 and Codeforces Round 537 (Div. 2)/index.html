@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="CodeCraft-19 and Codeforces Round #537 (Div. 2) A. Superhero Transformation题目大意水题。 题解水题。 代码1234567891011121314#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	int check[128] = &amp;#123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeCraft-19 and Codeforces Round">
+<meta property="og:url" content="http://yoursite.com/2019/02/11/CodeCraft-19 and Codeforces Round 537 (Div. 2)/index.html">
+<meta property="og:site_name" content="MAOoo">
+<meta property="og:description" content="CodeCraft-19 and Codeforces Round #537 (Div. 2) A. Superhero Transformation题目大意水题。 题解水题。 代码1234567891011121314#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	int check[128] = &amp;#123">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-11T13:15:49.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeCraft-19 and Codeforces Round">
+<meta name="twitter:description" content="CodeCraft-19 and Codeforces Round #537 (Div. 2) A. Superhero Transformation题目大意水题。 题解水题。 代码1234567891011121314#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	int check[128] = &amp;#123">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MAOoo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/11/CodeCraft-19 and Codeforces Round 537 (Div. 2)/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>CodeCraft-19 and Codeforces Round | MAOoo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MAOoo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/11/CodeCraft-19 and Codeforces Round 537 (Div. 2)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CodeCraft-19 and Codeforces Round
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-02-11 21:15:42 / Updated at: 21:15:49" itemprop="dateCreated datePublished" datetime="2019-02-11T21:15:42+08:00">2019-02-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/02/11/CodeCraft-19 and Codeforces Round 537 (Div. 2)/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/02/11/CodeCraft-19 and Codeforces Round 537 (Div. 2)/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://codeforces.com/contest/1111" target="_blank" rel="noopener">CodeCraft-19 and Codeforces Round #537 (Div. 2)</a></p>
+<h2 id="A-Superhero-Transformation"><a href="#A-Superhero-Transformation" class="headerlink" title="A. Superhero Transformation"></a>A. Superhero Transformation</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>水题。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> check[<span class="number">128</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	check[<span class="string">'a'</span>] = check[<span class="string">'e'</span>] = check[<span class="string">'i'</span>] = check[<span class="string">'o'</span>] = check[<span class="string">'u'</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">string</span> s1, s2;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">	<span class="keyword">if</span> (s1.size() ^ s2.size()) <span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ s1.size(); ++i)</span><br><span class="line">		<span class="keyword">if</span> (check[s1[i]] ^ check[s2[i]])</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Average-Superhero-Gang-Power"><a href="#B-Average-Superhero-Gang-Power" class="headerlink" title="B. Average Superhero Gang Power"></a>B. Average Superhero Gang Power</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给顶一个序列，最多可以操作$~k~$次，或者移除一个元素，或者是一个元素加$~1~$，且每个元素至多操作$~m~$次。输出该序列最后平均数的最大值。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。排序后暴力枚举移除操作的次数即可。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> a[maxn], pre[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, k, m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;n, &amp;k, &amp;m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, a + i);</span><br><span class="line">	sort(a, a + n + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) pre[i] = pre[i - <span class="number">1</span>] + a[i];</span><br><span class="line">	<span class="keyword">double</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ min(n, m + <span class="number">1</span>); ++i)</span><br><span class="line">		res = max(res, <span class="number">1.0</span> * (pre[n] - pre[i] + min(<span class="number">1L</span>L * (n - i) * k, <span class="number">1L</span>L * (m - i))) / (n - i));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%f\n"</span>, res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-Creative-Snap"><a href="#C-Creative-Snap" class="headerlink" title="C. Creative Snap"></a>C. Creative Snap</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>需要处理一整段长度为$~2^n~$的数轴，数轴上有$~k~$个物品。对于每个区间可以选择二等分后分别处理或者直接处理。处理区间时，如果区间上有物品，则需要花费$~B\cdot n_a\cdot l$，其中$~n_a~$和$~l~$分别是该区间物品数量和长度。否则处理空区间的花费为$~A~$。问最小总花费。<br>数据范围$~1\leq n\leq30,~1\leq k\leq10^5~$。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>直接根据题意递归处理即可。考虑一棵完整的线段树，它有$~2^{n+1}~$个节点。但是注意到对于空区间的节点，其子树是不需要考虑的。且最后一层只有$~k~$个非空节点，所以所有需要经过的节点是$~O(nk)~$级别的。对于区间内的数量，可以用$~\text{lower_bound}~$或$~\text{upper_bound}~$来计算，总时间复杂度为$~O(nk\log k)~$。<del>当然你想写线段树动态开点也不是不可以。</del></p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> A, B;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> size = upper_bound(a.begin(), a.end(), end) - upper_bound(a.begin(), a.end(), begin);</span><br><span class="line">	<span class="keyword">if</span> (!size) <span class="keyword">return</span> A;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ret = B * size * (end - begin);</span><br><span class="line">	<span class="keyword">if</span> (begin + <span class="number">1</span> ^ end) ret = min(ret, solve(begin, begin + end &gt;&gt; <span class="number">1</span>) + solve(begin + end &gt;&gt; <span class="number">1</span>, end));</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k &gt;&gt; A &gt;&gt; B;</span><br><span class="line">	a.resize(k);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; in : a) <span class="built_in">cin</span> &gt;&gt; in;</span><br><span class="line">	sort(a.begin(), a.end());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; solve(<span class="number">0</span>, <span class="number">1</span> &lt;&lt; n) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Destroy-the-Colony"><a href="#D-Destroy-the-Colony" class="headerlink" title="D. Destroy the Colony"></a>D. Destroy the Colony</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给定一个偶数长度的大小写字符串和$~q~$次询问。每次询问输出有多少种字符串的重排列满足所有一样的字母在同侧且$~x~$和$~y~$位置上的字母也在同侧。<br>数据范围$~1\leq n\leq10^5,~1\leq q\leq10^5~$。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>先考虑存在性，则存在一种字母的二划分使得每个划分下的数量总和均为$~\frac{n}{2}~$。设划分为</p>
+<script type="math/tex; mode=display">
+\{a_1,~a_2,~\dots,~a_k\}=\{b_1,~b_2,~\dots,~b_s,~c_1,~c_2,~\dots,~c_t\} \\
+\sum_{i=1}^{s}b_i=\sum_{i=1}^{t}c_i={\frac{n}{2}}</script><p>那么这种满足这种划分的重排列数量为</p>
+<script type="math/tex; mode=display">\frac{(\frac{n}{2})!}{\prod_{i=1}^{s}(b_i)!}\cdot\frac{(\frac{n}{2})!}{\prod_{i=1}^{t}(c_i)!}=\frac{((\frac{n}{2})!)^2}{\prod_{i=1}^{k}(a_i)!}</script><p>那么只需要考虑有多少种合法的划分方案。注意到最多只有$~52~$种不一样的字母，即$~k\leq52~$。那么可以用一个$~O(nk)~$的动态规划来算出对于任意$~0\leq i\leq n~$，有多少种子集的和为$~i~$。最后考虑询问，这相当于把某对$~a_i~$和$~a_j~$合并后计算，共$~\binom{k}{2}~$种组合如果每种情况分别动态规划，预处理的时间复杂度为$~O(nk^3)~$，显然会$~\text{TLE}~$。注意到每次动态规划的元素大部分是相同的，于是可以考虑<del>可持久化动态规划</del>的做法，在基于$~{a_1,~a_2,~\dots,~a_k}~$的基础上删除$~a_i~$和$~a_j~$。这样每种组合的动态规划时间复杂度为$~O(n)~$，总时间复杂度为$~O(nk^2+q)~$。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> inv[maxn], fact[maxn], finv[maxn];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; a, <span class="keyword">const</span> <span class="keyword">int</span>&amp; b)</span> </span>&#123;<span class="keyword">return</span> a &lt; b ? a - b + mod : a - b;&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; a, <span class="keyword">const</span> <span class="keyword">int</span>&amp; b)</span> </span>&#123;<span class="keyword">return</span> sub(a, mod - b);&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; a, <span class="keyword">const</span> <span class="keyword">int</span>&amp; b)</span> </span>&#123;<span class="keyword">return</span> <span class="number">1L</span>L * a * b % mod;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n = maxn)</span> </span>&#123;</span><br><span class="line">	inv[<span class="number">0</span>] = inv[<span class="number">1</span>] = fact[<span class="number">0</span>] = fact[<span class="number">1</span>] = finv[<span class="number">0</span>] = finv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i ^ n; ++i) &#123;</span><br><span class="line">		inv[i] = mul(inv[mod % i], mod - mod / i);</span><br><span class="line">		fact[i] = mul(fact[i - <span class="number">1</span>], i);</span><br><span class="line">		finv[i] = mul(finv[i - <span class="number">1</span>], inv[i]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">	<span class="keyword">int</span> size = str.size();</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; cnt;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> ch : str) ++cnt[ch];</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a, p(<span class="number">128</span>, <span class="number">-1</span>), dp(size + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> now : cnt) &#123;</span><br><span class="line">		p[now.first] = a.size();</span><br><span class="line">		a.push_back(now.second);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> base = mul(fact[size &gt;&gt; <span class="number">1</span>], fact[size &gt;&gt; <span class="number">1</span>]);</span><br><span class="line">	dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> x : a) &#123;</span><br><span class="line">		base = mul(base, finv[x]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = size; i &gt;= x; --i) dp[i] = add(dp[i], dp[i - x]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> res = mul(dp[size &gt;&gt; <span class="number">1</span>], base);</span><br><span class="line">	<span class="keyword">int</span> cal[<span class="number">52</span>][<span class="number">52</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ a.size(); ++i) <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j ^ a.size(); ++j) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = a[i]; k &lt;= size; ++k) dp[k] = sub(dp[k], dp[k - a[i]]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = a[j]; k &lt;= size; ++k) dp[k] = sub(dp[k], dp[k - a[j]]);</span><br><span class="line">		cal[i][j] = mul(add(dp[size &gt;&gt; <span class="number">1</span>], dp[size &gt;&gt; <span class="number">1</span>]), base);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = size; k &gt;= a[i]; --k) dp[k] = add(dp[k], dp[k - a[i]]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = size; k &gt;= a[j]; --k) dp[k] = add(dp[k], dp[k - a[j]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</span><br><span class="line">		x = p[str[x - <span class="number">1</span>]];</span><br><span class="line">		y = p[str[y - <span class="number">1</span>]];</span><br><span class="line">		<span class="keyword">if</span> (x &gt; y) swap(x, y);</span><br><span class="line">		<span class="keyword">if</span> (x == y) <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; cal[x][y] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/11/Codeforces Round 538 (Div. 2)/" rel="next" title="Codeforces Round">
+                <i class="fa fa-chevron-left"></i> Codeforces Round
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/11/Codeforces Global Round 1/" rel="prev" title="Codeforces Global Round 1">
+                Codeforces Global Round 1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MAOoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Superhero-Transformation"><span class="nav-number">1.</span> <span class="nav-text">A. Superhero Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Average-Superhero-Gang-Power"><span class="nav-number">2.</span> <span class="nav-text">B. Average Superhero Gang Power</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Creative-Snap"><span class="nav-number">3.</span> <span class="nav-text">C. Creative Snap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Destroy-the-Colony"><span class="nav-number">4.</span> <span class="nav-text">D. Destroy the Colony</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MAOoo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
