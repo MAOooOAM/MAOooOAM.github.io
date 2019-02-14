@@ -97,13 +97,14 @@
 
 
   <meta name="description" content="区间DP对于询问区间最优解的问题，可以先考虑较小区间的最优解，然后通过合并小区间得到大区间最有解。动态规划状态转移式 dp[i][j]=\min\{dp[i][k]+dp[k+1][j]\}+f[i][j]算法实现过程中通常要用到三层$~\text{for}~$循环，从外到里分别维护区间宽度$~j-i~$，区间端点$~i~$和区间分割点$~k~$，复杂度为$~O(N^3)~$。 四边形不等式如果$">
+<meta name="keywords" content="DP,区间DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="区间DP与平行四边形优化">
 <meta property="og:url" content="http://yoursite.com/2019/01/17/区间DP与平行四边形优化/index.html">
 <meta property="og:site_name" content="MAOoo">
 <meta property="og:description" content="区间DP对于询问区间最优解的问题，可以先考虑较小区间的最优解，然后通过合并小区间得到大区间最有解。动态规划状态转移式 dp[i][j]=\min\{dp[i][k]+dp[k+1][j]\}+f[i][j]算法实现过程中通常要用到三层$~\text{for}~$循环，从外到里分别维护区间宽度$~j-i~$，区间端点$~i~$和区间分割点$~k~$，复杂度为$~O(N^3)~$。 四边形不等式如果$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-17T14:10:06.218Z">
+<meta property="og:updated_time" content="2019-02-14T08:59:34.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区间DP与平行四边形优化">
 <meta name="twitter:description" content="区间DP对于询问区间最优解的问题，可以先考虑较小区间的最优解，然后通过合并小区间得到大区间最有解。动态规划状态转移式 dp[i][j]=\min\{dp[i][k]+dp[k+1][j]\}+f[i][j]算法实现过程中通常要用到三层$~\text{for}~$循环，从外到里分别维护区间宽度$~j-i~$，区间端点$~i~$和区间分割点$~k~$，复杂度为$~O(N^3)~$。 四边形不等式如果$">
@@ -222,6 +223,23 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
         
@@ -350,12 +368,24 @@
                 
               
 
-              <time title="Post created: 2019-01-17 21:54:41 / Updated at: 22:10:06" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:41+08:00">2019-01-17</time>
+              <time title="Post created: 2019-01-17 21:54:41" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:41+08:00">2019-01-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-02-14 16:59:34" itemprop="dateModified" datetime="2019-02-14T16:59:34+08:00">2019-02-14</time>
               
             
           </span>
@@ -459,6 +489,14 @@ dp[i][j-1]+dp[i+1][j]+1             &str[i]=str[j]
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/DP/" rel="tag"># DP</a>
+          
+            <a href="/tags/区间DP/" rel="tag"># 区间DP</a>
+          
+        </div>
+      
 
       
       
@@ -557,7 +595,7 @@ dp[i][j-1]+dp[i+1][j]+1             &str[i]=str[j]
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -576,12 +614,47 @@ dp[i][j-1]+dp[i+1][j]+1             &str[i]=str[j]
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">Kategorien</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">Tags</span>
+                  </a>
+                </div>
               
             </nav>
           

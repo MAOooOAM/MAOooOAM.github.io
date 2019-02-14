@@ -97,13 +97,14 @@
 
 
   <meta name="description" content="队列优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]">
+<meta name="keywords" content="DP,队列DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="队列优化DP">
 <meta property="og:url" content="http://yoursite.com/2019/01/17/队列优化DP/index.html">
 <meta property="og:site_name" content="MAOoo">
 <meta property="og:description" content="队列优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-17T14:10:03.617Z">
+<meta property="og:updated_time" content="2019-02-14T08:59:17.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="队列优化DP">
 <meta name="twitter:description" content="队列优化DP思想对于状态转移公式满足如下条件的动态规划 dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]">
@@ -222,6 +223,23 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
         
@@ -350,12 +368,24 @@
                 
               
 
-              <time title="Post created: 2019-01-17 21:54:38 / Updated at: 22:10:03" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:38+08:00">2019-01-17</time>
+              <time title="Post created: 2019-01-17 21:54:38" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:38+08:00">2019-01-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-02-14 16:59:17" itemprop="dateModified" datetime="2019-02-14T16:59:17+08:00">2019-02-14</time>
               
             
           </span>
@@ -470,6 +500,14 @@ l           &\in[j,~\min(maxp,~j+bs[i])]    \\
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/DP/" rel="tag"># DP</a>
+          
+            <a href="/tags/队列DP/" rel="tag"># 队列DP</a>
+          
+        </div>
+      
 
       
       
@@ -568,7 +606,7 @@ l           &\in[j,~\min(maxp,~j+bs[i])]    \\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -587,12 +625,47 @@ l           &\in[j,~\min(maxp,~j+bs[i])]    \\
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">Kategorien</span>
                   </a>
                 </div>
               
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">Tags</span>
+                  </a>
+                </div>
               
             </nav>
           
