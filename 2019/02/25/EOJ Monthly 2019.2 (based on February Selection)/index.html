@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="MAOoo">
 <meta property="og:description" content="EOJ Monthly 2019.2 (based on February Selection) A. 回收卫星题目大意交互题。有一个球心为$~(x,~y,~z)~$半径为$~r~$的球，且原点$~(0,~0,~0)~$保证在球内部或边界上。每次可以询问一个点是否在球的内部或边界上，需要在至多$~200~$次询问下确定球心坐标。数据范围$~{\mid x\mid}\leq10^9,~{\mid y">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-27T09:06:13.718Z">
+<meta property="og:updated_time" content="2019-02-27T09:08:35.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EOJ Monthly 2019.2 (based on February Selection)">
 <meta name="twitter:description" content="EOJ Monthly 2019.2 (based on February Selection) A. 回收卫星题目大意交互题。有一个球心为$~(x,~y,~z)~$半径为$~r~$的球，且原点$~(0,~0,~0)~$保证在球内部或边界上。每次可以询问一个点是否在球的内部或边界上，需要在至多$~200~$次询问下确定球心坐标。数据范围$~{\mid x\mid}\leq10^9,~{\mid y">
@@ -221,7 +221,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Beranda</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
         
@@ -255,7 +255,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategori</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
 
   </li>
         
@@ -272,7 +272,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Arsip</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
 
@@ -360,7 +360,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Diposting di</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -384,7 +384,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-02-27 17:06:13" itemprop="dateModified" datetime="2019-02-27T17:06:13+08:00">2019-02-27</time>
+                <time title="Updated at: 2019-02-27 17:08:35" itemprop="dateModified" datetime="2019-02-27T17:08:35+08:00">2019-02-27</time>
               
             
           </span>
@@ -398,7 +398,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Di</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/刷题笔记/" itemprop="url" rel="index"><span itemprop="name">刷题笔记</span></a></span>
@@ -450,7 +450,7 @@
       
         <p><a href="https://acm.ecnu.edu.cn/contest/140" target="_blank" rel="noopener">EOJ Monthly 2019.2 (based on February Selection)</a></p>
 <h2 id="A-回收卫星"><a href="#A-回收卫星" class="headerlink" title="A. 回收卫星"></a>A. 回收卫星</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>交互题。有一个球心为$~(x,~y,~z)~$半径为$~r~$的球，且原点$~(0,~0,~0)~$保证在球内部或边界上。每次可以询问一个点是否在球的内部或边界上，需要在至多$~200~$次询问下确定球心坐标。<br>数据范围$~{\mid x\mid}\leq10^9,~{\mid y\mid}\leq10^9,~{\mid z\mid}\leq10^9,~1\leq r\leq10^9~$。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>通过二分可以确定$~x_1=\max\lbrace x_0\mid(x-x_0)^2+y^2+z^2\leq r^2\rbrace~$和$~x_2=\min{x_0\mid(x-x_0)^2+y^2+z^2\leq r^2}~$。注意到绝对值最大为$~2\times10^9~$，二分上界必须大于该数，且会爆$~\text{int}~$。<br>考虑关于$~x_0~$的一元二次方程</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>通过二分可以确定$~x_1=\max\lbrace x_0\mid(x-x_0)^2+y^2+z^2\leq r^2\rbrace~$和$~x_2=\min\lbrace x_0\mid(x-x_0)^2+y^2+z^2\leq r^2\rbrace~$。注意到绝对值最大为$~2\times10^9~$，二分上界必须大于该数，且会爆$~\text{int}~$。<br>考虑关于$~x_0~$的一元二次方程</p>
 <script type="math/tex; mode=display">(x-x_0)^2+y^2+z^2=r^2</script><p>解为</p>
 <script type="math/tex; mode=display">x_0=x\pm\sqrt{r^2-y^2-z^2}</script><p>于是有</p>
 <script type="math/tex; mode=display">
@@ -570,10 +570,10 @@ x={\frac{x_1+x_2}{2}}</script><p>同理可解出$~y~$与$~z~$。次数最多$~6\
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Daftar Isi
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Ikhtisar
+            Übersicht
           </li>
         </ul>
       
@@ -594,7 +594,7 @@ x={\frac{x_1+x_2}{2}}</script><p>同理可解出$~y~$与$~z~$。次数最多$~6\
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">30</span>
-                    <span class="site-state-item-name">posting</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -615,7 +615,7 @@ x={\frac{x_1+x_2}{2}}</script><p>同理可解出$~y~$与$~z~$。次数最多$~6\
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">kategori</span>
+                    <span class="site-state-item-name">Kategorien</span>
                   </a>
                 </div>
               
@@ -654,7 +654,7 @@ x={\frac{x_1+x_2}{2}}</script><p>同理可解出$~y~$与$~z~$。次数最多$~6\
                       
                     
                     <span class="site-state-item-count">13</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   </a>
                 </div>
               
@@ -728,7 +728,7 @@ x={\frac{x_1+x_2}{2}}</script><p>同理可解出$~y~$与$~z~$。次数最多$~6\
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -736,7 +736,7 @@ x={\frac{x_1+x_2}{2}}</script><p>同理可解出$~y~$与$~z~$。次数最多$~6\
 
 
 
-  <div class="theme-info">Tema – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
 
 
 
