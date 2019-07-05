@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=6.7.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.7.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.7.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.7.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.7.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="2019BNU排位二 A. Nate and Actual 3D Girls题目大意水题。 题解水题。 代码123456789101112131415161718192021222324#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	ios::sync_with_stdio(false);	cin.tie(nu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019BNU排位二">
+<meta property="og:url" content="http://yoursite.com/2019/07/05/2019BNU排位二/index.html">
+<meta property="og:site_name" content="MAOoo">
+<meta property="og:description" content="2019BNU排位二 A. Nate and Actual 3D Girls题目大意水题。 题解水题。 代码123456789101112131415161718192021222324#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	ios::sync_with_stdio(false);	cin.tie(nu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-05T13:41:02.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019BNU排位二">
+<meta name="twitter:description" content="2019BNU排位二 A. Nate and Actual 3D Girls题目大意水题。 题解水题。 代码123456789101112131415161718192021222324#include &amp;lt;bits/stdc++.h&amp;gt;using namespace std;int main() &amp;#123;	ios::sync_with_stdio(false);	cin.tie(nu">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="MAOoo" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/05/2019BNU排位二/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>2019BNU排位二 | MAOoo</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MAOoo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/05/2019BNU排位二/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2019BNU排位二
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2019-07-05 21:40:55 / Updated at: 21:41:02" itemprop="dateCreated datePublished" datetime="2019-07-05T21:40:55+08:00">2019-07-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/训练笔记/" itemprop="url" rel="index"><span itemprop="name">训练笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <a href="/2019/07/05/2019BNU排位二/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2019/07/05/2019BNU排位二/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://codeforces.com/gym/247236" target="_blank" rel="noopener">2019BNU排位二</a></p>
+<h2 id="A-Nate-and-Actual-3D-Girls"><a href="#A-Nate-and-Actual-3D-Girls" class="headerlink" title="A. Nate and Actual 3D Girls"></a>A. Nate and Actual 3D Girls</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>水题。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int</span> n, m, k;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; cnt(<span class="number">26</span>), tot(<span class="number">26</span>);</span><br><span class="line">	<span class="keyword">while</span> (n--) &#123;</span><br><span class="line">		<span class="built_in">string</span> str;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; ch : str) ++cnt[(ch - <span class="string">'A'</span>) % <span class="number">26</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (m--) &#123;</span><br><span class="line">		<span class="built_in">string</span> str;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; ch : str) ++tot[(ch - <span class="string">'A'</span> + k) % <span class="number">26</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">bool</span> res = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">26</span>; ++i) res &amp;= cnt[i] &gt;= tot[i];</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; (res ? <span class="string">"Make her kokoro go doki-doki!"</span> : <span class="string">"It is gonna be daijoubu."</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="B-Nate-and-Bones"><a href="#B-Nate-and-Bones" class="headerlink" title="B. Nate and Bones"></a>B. Nate and Bones</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>水题。</p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int</span> n, m, x;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; x;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = n * m; i; --i) &#123;</span><br><span class="line">		<span class="keyword">int</span> l;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; l;</span><br><span class="line">		res += __gcd(x, l) != <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="C-Nate-and-Contest-Invitation"><a href="#C-Nate-and-Contest-Invitation" class="headerlink" title="C. Nate and Contest Invitation"></a>C. Nate and Contest Invitation</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给定一个朋友关系网。最多能邀请$~k~$个人，被邀请的人的朋友以及朋友的朋友等也会来。输出最多能来多少人。</p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>并查集或者$~\text{DFS}~$维护每个连通块的大小即可。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">100000</span>;</span><br><span class="line"><span class="keyword">int</span> fa[maxn], sz[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123; <span class="keyword">return</span> u == fa[u] ? u : fa[u] = find(fa[u]); &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	u = find(u);</span><br><span class="line">	v = find(v);</span><br><span class="line">	<span class="keyword">if</span> (u != v) &#123;</span><br><span class="line">		fa[v] = u;</span><br><span class="line">		sz[u] += sz[v];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int</span> n, m, k;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u != n; ++u) sz[fa[u] = u] = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">vector</span>&lt;pair&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;&gt; fri(m);</span><br><span class="line">	<span class="built_in">set</span>&lt;<span class="built_in">string</span>&gt; name;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; f : fri) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; f.first &gt;&gt; f.second;</span><br><span class="line">		name.emplace(f.first);</span><br><span class="line">		name.emplace(f.second);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; id;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; str : name) id[str] = temp++;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; f : fri) merge(id[f.first], id[f.second]);</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; group;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u != n; ++u) <span class="keyword">if</span> (fa[u] == u) group.emplace_back(sz[u]);</span><br><span class="line">	sort(group.begin(), group.end());</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; accumulate(group.begin() + max(<span class="number">0</span>, <span class="keyword">int</span>(group.size()) - k), group.end(), <span class="number">0</span>) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Nate-and-Dimension-Hopping-Money"><a href="#D-Nate-and-Dimension-Hopping-Money" class="headerlink" title="D. Nate and Dimension-Hopping Money"></a>D. Nate and Dimension-Hopping Money</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>水题。</p>
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
+<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">double</span> n, x, y;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; x &gt;&gt; y;</span><br><span class="line">	x /= <span class="number">100</span>;</span><br><span class="line">	y /= <span class="number">100</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; fixed &lt;&lt; setprecision(<span class="number">5</span>)</span><br><span class="line">	&lt;&lt; n &lt;&lt; <span class="string">' '</span></span><br><span class="line">	&lt;&lt; n / (<span class="number">1</span> - y + x * y) &lt;&lt; <span class="string">' '</span></span><br><span class="line">	&lt;&lt; n * (<span class="number">1</span> - x) / (<span class="number">1</span> - y + x * y) &lt;&lt; <span class="string">' '</span></span><br><span class="line">	&lt;&lt; n * (<span class="number">1</span> - x - y + x * y) / (<span class="number">1</span> - y + x * y) &lt;&lt; <span class="string">' '</span></span><br><span class="line">	&lt;&lt; n * (<span class="number">1</span> - x - y + x * y) / (<span class="number">1</span> - y + x * y) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="F-Nate-and-Fan-Meet-and-Greet"><a href="#F-Nate-and-Fan-Meet-and-Greet" class="headerlink" title="F. Nate and Fan Meet-and-Greet"></a>F. Nate and Fan Meet-and-Greet</h2><h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>水题。</p>
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
+<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int64_t</span> x;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; x;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="G-Nate-and-Game"><a href="#G-Nate-and-Game" class="headerlink" title="G. Nate and Game"></a>G. Nate and Game</h2><h3 id="题目大意-5"><a href="#题目大意-5" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给定$~n~$个三角形，问一条平行于$~\rm x~$轴的直线最多穿过多少三角形。</p>
+<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a><strong>代码</strong></h3><p>扫描线维护每一条线经过的三角形数量。本题由于坐标范围小，可以改用差分数组维护，复杂度可以少一个$~\log~$。</p>
+<h3 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; add, sub;</span><br><span class="line">	<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; line;</span><br><span class="line">	<span class="keyword">while</span> (n--) &#123;</span><br><span class="line">		<span class="keyword">int</span> x[<span class="number">3</span>], y[<span class="number">3</span>];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">3</span>; ++i) <span class="built_in">cin</span> &gt;&gt; x[i] &gt;&gt; y[i];</span><br><span class="line">		<span class="keyword">int</span> mi = *min_element(y, y + <span class="number">3</span>), mx = *max_element(y, y + <span class="number">3</span>);</span><br><span class="line">		++add[mi];</span><br><span class="line">		++sub[mx];</span><br><span class="line">		line.emplace(mi);</span><br><span class="line">		line.emplace(mx);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>, cur = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; y : line)&#123;</span><br><span class="line">		res = max(res, cur += add[y]);</span><br><span class="line">		cur -= sub[y];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="H-Nate-and-High-School-Nakama"><a href="#H-Nate-and-High-School-Nakama" class="headerlink" title="H. Nate and High School Nakama"></a>H. Nate and High School Nakama</h2><h3 id="题目大意-6"><a href="#题目大意-6" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>总共有$~n~$个点，输出所有可能的图中的连通块数量之和。</p>
+<h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>先计算$~n~$阶完全图的连图子图数量$~f(n)~$。记不连通子图数量为$~g(n)~$，则有$~f(n)+g(n)=2^{\frac{n(n-1)}{2}}~$。对$~g(n)~$，枚举点$~1~$所在连通块的大小，则有</p>
+<script type="math/tex; mode=display">g(n)=\sum_{k=1}^{n-1}f(k)\binom{n-1}{k-1}2^{\frac{(n-k)(n-k-1)}{2}}</script><p>即</p>
+<script type="math/tex; mode=display">f(n)=2^{\frac{n(n-1)}{2}}-\sum_{k=1}^{n-1}f(k)\binom{n-1}{k-1}2^{\frac{(n-k)(n-k-1)}{2}}</script><p>记全点集为$~S=\lbrace~1,2,\dots,n~\rbrace~$，用边集$~E~$代表图，记$~F(E)~$为$~E~$的所有连通块点集构成的集合。即对任意$~V\in F(E)~$，有$~V\subset S~$且$~V~$在$~E~$下连通，并且$~V_1\cap V_2=\varnothing,\forall~V_1\neq V_2\in F(E)~$。于是答案为计算$~\sum_{E}{\mid F(E)\mid}~$。对于上述$~V~$与$~E~$的关系，即$~V~$构成$~E~$的连通块点集，记为$~V\mid E~$。则有如下恒等变换</p>
+<script type="math/tex; mode=display">\sum_{E}{\mid F(E)\mid}=\sum_{E}\sum_{V\in F(E)}1=\sum_{V\subset S}\sum_{V\mid E}1</script><p>其中$~\sum_{V\mid E}1~$表示点集$~V~$恰好构成一个连通块的图的数量。不难注意到对于$~{\mid V_1\mid}={\mid V_2\mid}~$，有$~\sum_{V_1\mid E}1=\sum_{V_2\mid E}1~$。于是把枚举$~S~$的子集$~V~$改为枚举$~\mid V\mid~$，则答案为</p>
+<script type="math/tex; mode=display">\sum_{E}{\mid F(E)\mid}=\sum_{k=1}^{n}\binom{n}{k}f(k)2^{\frac{(n-k)(n-k-1)}{2}}</script><h3 id="代码-7"><a href="#代码-7" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod  = <span class="number">1000000007</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a + b &lt; mod ? a + b : a + b - mod; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a - b + mod : a - b; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> <span class="number">1L</span>L * a * b % mod; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpow</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int64_t</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ret = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (n = (n % (mod - <span class="number">1</span>) + mod - <span class="number">1</span>) % (mod - <span class="number">1</span>); n; n &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (n &amp; <span class="number">1</span>) ret = mul(ret, a);</span><br><span class="line">		a = mul(a, a);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">12</span>;</span><br><span class="line"><span class="keyword">int</span> inv[maxn], fact[maxn], finv[maxn], cal[maxn], res[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	inv[<span class="number">0</span>] = inv[<span class="number">1</span>] = fact[<span class="number">0</span>] = fact[<span class="number">1</span>] = finv[<span class="number">0</span>] = finv[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i != maxn; ++i) &#123;</span><br><span class="line">		inv[i] = mul(inv[mod % i], mod - mod / i);</span><br><span class="line">		fact[i] = mul(fact[i - <span class="number">1</span>], i);</span><br><span class="line">		finv[i] = mul(finv[i - <span class="number">1</span>], inv[i]);</span><br><span class="line">		cal[i] = add(cal[i - <span class="number">1</span>], i - <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != maxn; ++i) cal[i] = fpow(<span class="number">2</span>, cal[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bino</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123; <span class="keyword">return</span> mul(fact[n], mul(finv[k], finv[n - k])); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	res[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> n = <span class="number">2</span>; n != maxn; ++n) &#123;</span><br><span class="line">		res[n] = cal[n];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k != n; ++k) res[n] = sub(res[n], mul(res[k], mul(bino(n - <span class="number">1</span>, k - <span class="number">1</span>), cal[n - k])));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	solve();</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; ++k) ans = add(ans, mul(res[k], mul(bino(n, k), cal[n - k])));</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="I-Nate-and-Integer-Coefficient"><a href="#I-Nate-and-Integer-Coefficient" class="headerlink" title="I. Nate and Integer Coefficient"></a>I. Nate and Integer Coefficient</h2><h3 id="题目大意-7"><a href="#题目大意-7" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>已知$~a~$且$~x~$满足$~x^2-ax+1=0~$，求$~b~$满足$~x^{2n}-bx^n+1=0~$。<br>数据范围$~1\leq T\leq10^5,~{\mid a\mid},{\mid n\mid}\leq10^{18}~$。</p>
+<h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>不难发现$~\pm n~$的答案是一样的，下面只考虑$~n\geq 0~$的情况。记$~a_k~$满足$~x^{2k}-a_kx^k+1=0~$。有$~a_0=2,~a_1=a~$。于是对于$~0\leq k_1\leq k_2~$，有</p>
+<script type="math/tex; mode=display">a_{k_1}x^{k_1}=x^{2k_1}+1\\a_{k_2}x^{k_2}=x^{2k_2}+1</script><p>两式相乘，得</p>
+<script type="math/tex; mode=display">\begin{aligned}
+a_{k_1}a_{k_2}x^{k_1+k_2}&=(x^{2k_1}+1)(x^{2k_2}+1)\\
+&=(x^{2(k_1+k_2)}+1)+x^{2k_1}(x^{2(k_2-k_1)}+1)\\
+&=a_{k1+k2}x^{k_1+k_2}+x^{2k_1}\cdot a_{k_2-k_1}x^{k_2-k_1}\\
+&=(a_{k_1+k_2}+a_{k_2-k_1})x^{k_1+k_2}
+\end{aligned}</script><p>取$~k_1=n,~k_2=n+1~$，于是得到序列$~\lbrace~a_n~\rbrace~$的线性递推式</p>
+<script type="math/tex; mode=display">a_{n+1}=a_1a_n-a_{n-1}=a\cdot a_n-a_{n-1}</script><p>接下来矩阵快速幂即可。总时间复杂度为$~O(T\log n)~$。</p>
+<h3 id="代码-8"><a href="#代码-8" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1000000007</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a + b &lt; mod ? a + b : a + b - mod; &#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123; <span class="keyword">return</span> <span class="number">1L</span>L * a * b % mod; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> A[<span class="number">2</span>][<span class="number">2</span>], <span class="keyword">int</span> B[<span class="number">2</span>][<span class="number">2</span>], <span class="keyword">int</span> C[<span class="number">2</span>][<span class="number">2</span>])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i != <span class="number">2</span>; ++i) <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j != <span class="number">2</span>; ++j) &#123;</span><br><span class="line">		C[i][j] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k != <span class="number">2</span>; ++k) C[i][j] = add(C[i][j], mul(A[i][k], B[k][j]));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="built_in">cout</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int</span> T;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">	<span class="keyword">while</span> (T--) &#123;</span><br><span class="line">		<span class="keyword">int64_t</span> a, n;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a &gt;&gt; n;</span><br><span class="line">		<span class="keyword">int</span> A = (a % mod + mod) % mod;</span><br><span class="line">		<span class="keyword">if</span> (!n) &#123; <span class="built_in">cout</span> &lt;&lt; <span class="number">2</span> &lt;&lt; <span class="string">'\n'</span>; <span class="keyword">continue</span>; &#125;</span><br><span class="line">		<span class="keyword">int</span> bas[<span class="number">2</span>][<span class="number">2</span>] = &#123; &#123; A, mod - <span class="number">1</span> &#125;, &#123; <span class="number">1</span>, <span class="number">0</span> &#125; &#125;, mat[<span class="number">2</span>][<span class="number">2</span>] = &#123; &#123; <span class="number">1</span>, <span class="number">0</span> &#125;, &#123; <span class="number">0</span>, <span class="number">1</span> &#125; &#125;, tmp[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">for</span> (n = <span class="built_in">abs</span>(n); n; n &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</span><br><span class="line">				mul(mat, bas, tmp);</span><br><span class="line">				<span class="built_in">memcpy</span>(mat, tmp, <span class="keyword">sizeof</span> (tmp));</span><br><span class="line">			&#125;</span><br><span class="line">			mul(bas, bas, tmp);</span><br><span class="line">			<span class="built_in">memcpy</span>(bas, tmp, <span class="keyword">sizeof</span> (tmp));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; add(mul(mat[<span class="number">1</span>][<span class="number">0</span>], A), add(mat[<span class="number">1</span>][<span class="number">1</span>], mat[<span class="number">1</span>][<span class="number">1</span>])) &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/05/2019BNU排位一/" rel="next" title="2019BNU排位一">
+                <i class="fa fa-chevron-left"></i> 2019BNU排位一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MAOoo</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">Tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Nate-and-Actual-3D-Girls"><span class="nav-number">1.</span> <span class="nav-text">A. Nate and Actual 3D Girls</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Nate-and-Bones"><span class="nav-number">2.</span> <span class="nav-text">B. Nate and Bones</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Nate-and-Contest-Invitation"><span class="nav-number">3.</span> <span class="nav-text">C. Nate and Contest Invitation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Nate-and-Dimension-Hopping-Money"><span class="nav-number">4.</span> <span class="nav-text">D. Nate and Dimension-Hopping Money</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Nate-and-Fan-Meet-and-Greet"><span class="nav-number">5.</span> <span class="nav-text">F. Nate and Fan Meet-and-Greet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-4"><span class="nav-number">5.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-4"><span class="nav-number">5.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-4"><span class="nav-number">5.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Nate-and-Game"><span class="nav-number">6.</span> <span class="nav-text">G. Nate and Game</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-5"><span class="nav-number">6.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-5"><span class="nav-number">6.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-6"><span class="nav-number">6.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Nate-and-High-School-Nakama"><span class="nav-number">7.</span> <span class="nav-text">H. Nate and High School Nakama</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-6"><span class="nav-number">7.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-5"><span class="nav-number">7.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-7"><span class="nav-number">7.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Nate-and-Integer-Coefficient"><span class="nav-number">8.</span> <span class="nav-text">I. Nate and Integer Coefficient</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-7"><span class="nav-number">8.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-6"><span class="nav-number">8.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-8"><span class="nav-number">8.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MAOoo</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.7.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=6.7.0"></script>
+
+  <script src="/js/src/motion.js?v=6.7.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=6.7.0"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=6.7.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
+
+    
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+          if (result) $(this).text('Copied');
+          else $(this).text('Copy failed');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
