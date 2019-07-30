@@ -218,7 +218,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
         
@@ -252,7 +252,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
 
   </li>
         
@@ -269,7 +269,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
 
@@ -305,6 +305,208 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/队列优化DP/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/17/队列优化DP/" class="post-title-link" itemprop="url">队列优化DP</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-17 21:54:38" itemprop="dateCreated datePublished" datetime="2019-01-17T21:54:38+08:00">2019-01-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-14 16:59:17" itemprop="dateModified" datetime="2019-02-14T16:59:17+08:00">2019-02-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="队列优化DP思想"><a href="#队列优化DP思想" class="headerlink" title="队列优化DP思想"></a>队列优化DP思想</h2><p>对于状态转移公式满足如下条件的动态规划</p>
+<script type="math/tex; mode=display">dp[i]=(\min\text{or}\max)\{f[j]\}+g[i],~j\in[\alpha[i],\beta[i]]</script><p>其中$~f~$和$~g~$均可线性时间内求出，且$\alpha~$和$~\beta~$单调递增。朴素的做法是直接暴力循环计算状态转移，时间复杂度为$~O(n^2)~$。但是注意到区间$~[\alpha,~\beta]~$的单调递增性质，可以用一个叫做<strong>单调队列</strong>的数据结构来维护区间的最值。</p>
+<h3 id="单调队列的性质"><a href="#单调队列的性质" class="headerlink" title="单调队列的性质"></a><strong>单调队列的性质</strong></h3><ol>
+<li>可以用双端队列或者双指针数组实现，内部的任意元素$~que[i]~$表示$~f~$的角标。</li>
+<li>角标有序储存，即$~que[i]&lt;que[j],~\forall~i&lt;j~$。</li>
+<li>角标对应的数组值单调，即$~f[que[i]]~$单调递增或者单调递减。</li>
+</ol>
+<h3 id="单调队列的操作（单调递减队列维护区间最大值）"><a href="#单调队列的操作（单调递减队列维护区间最大值）" class="headerlink" title="单调队列的操作（单调递减队列维护区间最大值）"></a><strong>单调队列的操作（单调递减队列维护区间最大值）</strong></h3><ol>
+<li>每次更新区间时，从小到大考虑新加入的角标$~now~$，将所有队列$~que~$中满足$~que[cmp]&lt;que[now]~$的元素$~cmp~$从队列$~que~$中移除。由于单调队列的性质，只需要让$~now~$与队列$~que~$的尾部元素$~last~$比较即可。</li>
+<li>将$~now~$放入队列$~que~$尾部，经过上一个操作，单调队列性质依然保持。</li>
+<li>将队列$~que~$头部所有不在区间$~[\alpha,~\beta]~$的元素$~head~$从队列$~que~$中移除。由于区间$~[\alpha,~\beta]~$的单调递增性质，单调队列性质依然保持，且此时$~\max{f[i]}=f[que[head]]~$。</li>
+</ol>
+<h3 id="复杂度计算"><a href="#复杂度计算" class="headerlink" title="复杂度计算"></a><strong>复杂度计算</strong></h3><p>每个角标$~i~$至多被放入队列$~que~$或者从队列$~que~$中移除一次，所以是线性复杂度$~O(n)~$。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="HDU3401"><a href="#HDU3401" class="headerlink" title="HDU3401"></a><a href="http://acm.hdu.edu.cn/showproblem.php?pid=3401" target="_blank" rel="noopener">HDU3401</a></h3><h4 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h4><p>炒股，一共$~T~$天，第$~i~$天股票的买价是$~ap[i]~$、最多可以买$~as[i]~$股，卖价是$~bp[i]~$、最多可以卖$~bs[i]~$股，且每两次交易之间相隔必须大于$~W~$天，最大屯股量为$~maxp~$，问最后的最大收益。</p>
+<h4 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h4><p>动态规划，记$~dp[i][j]~$表示在第$~i~$天还剩下$~j~$股的最大收益，则有$~3~$种状态更新</p>
+<script type="math/tex; mode=display">dp[i][j]=\max\begin{cases}
+dp[i-1][j]              &\text{null}                        \\
+dp[i-w-1][j-k]-ap[i]*k  &\text{$k\leq\min(j,~as[i])$}       \\
+dp[i-w-1][j+k]+bp[i]*k  &\text{$k\leq\min(maxp-j~,bs[i])$}  \\
+\end{cases}</script><p>这样的时间复杂度为$~O(T\cdot maxp^2)~$，显然会$~\text{TLE}~$。但观察$~dp[i][j]~$的第二种状态更新，有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+dp[i][j]    &=\max\alpha[l]-ap[i]*j     \\
+\alpha[l]   &=dp[i-w-1][l]+ap[i]*[l]    \\
+l           &\in[\max(0,~j-as[i]),~j]   \\
+\end{aligned}</script><p>第三种状态更新同理</p>
+<script type="math/tex; mode=display">\begin{aligned}
+dp[i][j]    &=\max\beta[l]-bp[i]*j          \\
+\beta[l]    &=dp[i-w-1][l]+bp[i]*[l]        \\
+l           &\in[j,~\min(maxp,~j+bs[i])]    \\
+\end{aligned}</script><p>于是可以用单调队列来维护$~\max(\alpha,\beta)~$。这样对于每个$~dp[i][j]~$状态转移的平均复杂度为$~O(1)~$，总时间复杂度为$~O(T\cdot maxp)~$。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">11</span>;</span><br><span class="line"><span class="keyword">int</span> ap[maxn], bp[maxn], as[maxn], bs[maxn], temp[maxn], dp[maxn &lt;&lt; <span class="number">1</span>][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n, maxp, w;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; maxp &gt;&gt; w;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; ap[i] &gt;&gt; bp[i] &gt;&gt; as[i] &gt;&gt; bs[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= w; ++i) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= maxp; ++j) dp[i][j] = -inf;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; que;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) dp[i + w][j] = dp[i + w - <span class="number">1</span>][j];</span><br><span class="line">            que.clear();</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) &#123;</span><br><span class="line">                temp[j] = dp[i - <span class="number">1</span>][j] + ap[i] * j;</span><br><span class="line">                <span class="keyword">while</span> (!que.empty() &amp;&amp; temp[que.back()] &lt; temp[j]) que.pop_back();</span><br><span class="line">                que.push_back(j);</span><br><span class="line">                <span class="keyword">while</span> (que.front() &lt; j - as[i]) que.pop_front();</span><br><span class="line">                dp[i + w][j] = max(dp[i + w][j], temp[que.front()] - ap[i] * j);</span><br><span class="line">            &#125;</span><br><span class="line">            que.clear();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) temp[j] = dp[i - <span class="number">1</span>][j] + bp[i] * j;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j ^ bs[i]; ++j) &#123;</span><br><span class="line">                <span class="keyword">while</span> (!que.empty() &amp;&amp; temp[que.back()] &lt; temp[j]) que.pop_back();</span><br><span class="line">                que.push_back(j);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= maxp; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j + bs[i] &lt;= maxp) &#123;</span><br><span class="line">                    <span class="keyword">while</span> (!que.empty() &amp;&amp; temp[que.back()] &lt; temp[j + bs[i]]) que.pop_back();</span><br><span class="line">                    que.push_back(j + bs[i]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">while</span> (que.front() &lt; j) que.pop_front();</span><br><span class="line">                dp[i + w][j] = max(dp[i + w][j], temp[que.front()] - bp[i] * j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; dp[n + w][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -359,14 +561,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-01-17 20:54:33 / Updated at: 22:08:29" itemprop="dateCreated datePublished" datetime="2019-01-17T20:54:33+08:00">2019-01-17</time>
+              <time title="Created: 2019-01-17 20:54:33 / Modified: 22:08:29" itemprop="dateCreated datePublished" datetime="2019-01-17T20:54:33+08:00">2019-01-17</time>
             
 
             
@@ -385,7 +587,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
@@ -540,14 +742,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2019-01-17 15:46:42" itemprop="dateCreated datePublished" datetime="2019-01-17T15:46:42+08:00">2019-01-17</time>
+              <time title="Created: 2019-01-17 15:46:42" itemprop="dateCreated datePublished" datetime="2019-01-17T15:46:42+08:00">2019-01-17</time>
             
 
             
@@ -564,7 +766,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-05-10 13:02:15" itemprop="dateModified" datetime="2019-05-10T13:02:15+08:00">2019-05-10</time>
+                <time title="Modified: 2019-05-10 13:02:15" itemprop="dateModified" datetime="2019-05-10T13:02:15+08:00">2019-05-10</time>
               
             
           </span>
@@ -578,7 +780,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">In</span>
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
@@ -723,8 +925,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">42</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -747,7 +949,7 @@
                       
                     
                     <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">Kategorien</span>
+                    <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
               
@@ -788,7 +990,7 @@
                       
                     
                     <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -845,7 +1047,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -980,6 +1182,8 @@
     
       
         
+      
+    
       
     
       
