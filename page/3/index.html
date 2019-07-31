@@ -321,6 +321,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/RMQ与LCA与ST表 (TBC)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MAOoo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MAOoo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/15/RMQ与LCA与ST表 (TBC)/" class="post-title-link" itemprop="url">RMQ与LCA与ST表 (TBC)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-15 01:19:26" itemprop="dateCreated datePublished" datetime="2019-02-15T01:19:26+08:00">2019-02-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-16 04:28:53" itemprop="dateModified" datetime="2019-02-16T04:28:53+08:00">2019-02-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="RMQ"><a href="#RMQ" class="headerlink" title="RMQ"></a>RMQ</h2><p>区间最值查询$~\text{Range Minimun/Maximun Query}~$，简称$~\text{RMQ}~$。</p>
+<h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a><strong>线段树</strong></h3><p>线段树是解决$~\text{RMQ}~$问题最普通的办法，时间复杂度为预处理$~O(n)~$，单次询问$~O(\log n)~$。支持在线。同时也支持$~O(\log n)~$的区间修改的动态$~\text{RMQ}~$问题。下面模板的区间均为左开右闭，角标从$~0~$开始。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; <span class="number">17</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn], seg[maxn &lt;&lt; <span class="number">1</span>], tag[maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid (begin + end &gt;&gt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lson (index &lt;&lt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rson (index &lt;&lt; 1 ^ 1)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (begin ^ mid) &#123;</span><br><span class="line">		build(begin, mid, lson);</span><br><span class="line">		build(mid, end, rson);</span><br><span class="line">		seg[index] = min(seg[lson], seg[rson]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		seg[index] = a[begin];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">push_down</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; index)</span> </span>&#123;</span><br><span class="line">	seg[index] += tag[index];</span><br><span class="line">	<span class="keyword">if</span> (index &lt; maxn)) &#123;</span><br><span class="line">		tag[lson] += tag[index];</span><br><span class="line">		tag[rson] += tag[index];</span><br><span class="line">	&#125;</span><br><span class="line">	tag[index] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end, <span class="keyword">int</span> index, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	push_down(index);</span><br><span class="line">	<span class="keyword">if</span> (begin &gt;= left &amp;&amp; end &lt;= right) &#123;</span><br><span class="line">		tag[index] += x;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (left &lt; mid) modify(begin, mid, lson, left, right, x);</span><br><span class="line">	<span class="keyword">if</span> (right &gt; mid) modify(mid, end, rson, left, right, x);</span><br><span class="line">	seg[index] = min(seg[lson] + tag[lson], seg[rson] + tag[rson]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end, <span class="keyword">int</span> index, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">	push_down(index);</span><br><span class="line">	<span class="keyword">if</span> (begin &gt;= left &amp;&amp; end &lt;= right) <span class="keyword">return</span> seg[index];</span><br><span class="line">	<span class="keyword">if</span> (begin &gt;= right || end &lt;= left) <span class="keyword">return</span> <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">	<span class="keyword">return</span> min(query(begin, mid, lson, left, right), query(mid, end, rson, left, right));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ST表"><a href="#ST表" class="headerlink" title="ST表"></a><strong>ST表</strong></h3><p>如果只有静态查询，那么考虑这样一个数组：记$~st[i][j]~$为$~[i,~i+2^j)~$的最值。那么需要$~O(n\log n)~$的空间。显然$~st[i][0]=a[i]~$。且对于其它项，可以将区间$~[i,~i+2^j)~$二分为$~[i,~i+2^{j-1})~$和$~[i+2^{j-1},~i+2^j)~$，也就是通过$~st[i][j-1]~$和$~st[i+2^{j-1}][j-1]~$来$~O(1)~$地转移。那么对于任意的询问区间$~[l,~r)~$，记$~k=\lfloor\log(r-l)\rfloor~$，均可划分为$~[l,~l+2^k)~$和$~[r-2^k,~r)~$这两个子问题来解决。时间复杂度为预处理$~O(n\log n)~$，单次询问$~O(1)~$。支持在线。下面模板的角标从$~0~$开始。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> pow2 = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; pow2;</span><br><span class="line"><span class="keyword">int</span> a[maxn], st[maxn][pow2 + <span class="number">1</span>], log2_floor[maxn], n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">st_init</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	log2_floor[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) log2_floor[i] = log2_floor[i &gt;&gt; <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) st[i][<span class="number">0</span>] = a[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= log2_floor[n]; ++i) <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j + (<span class="number">1</span> &lt;&lt; i) ^ n; ++j)</span><br><span class="line">		st[j][i] = min(st[j][i - <span class="number">1</span>], st[j + (<span class="number">1</span> &lt;&lt; i - <span class="number">1</span>)][i - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">rmq</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; l, <span class="keyword">const</span> <span class="keyword">int</span>&amp; r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> k = log2_floor[r - l];</span><br><span class="line">	<span class="keyword">return</span> min(st[l][k], st[r - (<span class="number">1</span> &lt;&lt; k)][k]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="LCA"><a href="#LCA" class="headerlink" title="LCA"></a>LCA</h2><p>最近公共祖先$~\text{Lowest Common Ancestors}~$，简称$~\text{LCA}~$。</p>
+<h3 id="倍增"><a href="#倍增" class="headerlink" title="倍增"></a><strong>倍增</strong></h3><p>类似于$~\text{ST}~$表的$~\text{DP}~$思想，记$~pa[i][j]~$为节点$~i~$的第$~2^j~$级祖先。为防止溢出，根节点的父亲依然是根节点。现在$~\text{DFS}~$过程中处理出$~pa[i][0]~$，对于其它项，有$~O(1)~$的转移式</p>
+<script type="math/tex; mode=display">pa[i][j]=pa[pa[i][j-1]][j-1]</script><p>这里的时间复杂度和空间复杂度均为$~O(\log n)~$。那么可以用类似快速幂的方式，可以在$~O(\log n)~$的时间内查询任意点的任意级祖先。查询$~\text{LCA}~$时，先将较深的点上升到与另一点等高，然后在保持两点不一样的条件下，将两个点上升至$~\text{LCA}~$的两个儿子处。时间复杂度为预处理$~O(n\log n)~$，单次查询$~O(\log n)~$。支持在线。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> pow2 = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; pow2;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[maxn];</span><br><span class="line"><span class="keyword">int</span> pa[maxn][pow2], dep[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u = <span class="number">1</span>, <span class="keyword">int</span> p = <span class="number">1</span>, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">	dep[u] = d;</span><br><span class="line">	pa[u][<span class="number">0</span>] = p;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ pow2; ++i) pa[u][i] = pa[pa[u][i - <span class="number">1</span>]][i - <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : adj[u]) <span class="keyword">if</span> (v ^ p) dfs(v, u, d + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (dep[u] &gt; dep[u]) swap(u, v);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> k = dep[v] - dep[u], i = <span class="number">0</span>; k; k &gt;&gt;= <span class="number">1</span>, ++i) <span class="keyword">if</span> (k &amp; <span class="number">1</span>) u = pa[u][i];</span><br><span class="line">	<span class="keyword">if</span> (u == v) <span class="keyword">return</span> u;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = pow2 - <span class="number">1</span>; ~i; --i) <span class="keyword">if</span> (pa[u][i] ^ pa[v][i]) &#123;</span><br><span class="line">		u = pa[u][i];</span><br><span class="line">		v = pa[v][i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> pa[u][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ST表-1"><a href="#ST表-1" class="headerlink" title="ST表"></a><strong>ST表</strong></h3><p>首先引入一个叫<strong>欧拉序</strong>的概念，在$~\text{DFS}~$序的基础上，将回溯过程中经过的点也加入到序列之中，则构成了欧拉序。容易证明，序列的长度为$~2n-1~$，且一个节点是叶节点当且仅当它只在欧拉序中出现一次。那么对于非叶节点$~u~$，它在欧拉序中出现至少$~2~$次，那么节点$~v~$是$~u~$的后代，当且仅当$~v~$在欧拉序中，被$~2~$个$~u~$包含。于是对于欧拉序上两个点的$~\text{LCA}~$问题，可以等价于这两个节点构成的闭区间的$~\text{LCA}~$问题，且$~\text{LCA}~$必出现在这个闭区间之中。和$~\text{RMQ}~$问题一样，这类问题是保偏序的。所以可以用$~\text{ST}~$表来支持$~O(n\log n)~$的预处理和$~O(1)~$的单次在线查询。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> pow2 = <span class="number">17</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1</span> &lt;&lt; pow2;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[maxn];</span><br><span class="line"><span class="keyword">int</span> st[maxn &lt;&lt; <span class="number">1</span>][pow2 + <span class="number">1</span>], dep[maxn], euler[maxn], log2_floor[maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> euler_clock;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u = <span class="number">1</span>, <span class="keyword">int</span> p = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">	st[++euler_clock][<span class="number">0</span>] = u;</span><br><span class="line">	euler[u] = euler_clock;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : adj[u]) <span class="keyword">if</span> (v ^ p) &#123;</span><br><span class="line">		dep[v] = dep[u] + <span class="number">1</span>;</span><br><span class="line">		dfs(v, u);</span><br><span class="line">		st[++euler_clock][<span class="number">0</span>] = u;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; x, <span class="keyword">const</span> <span class="keyword">int</span>&amp; y)</span> </span>&#123;<span class="keyword">return</span> dep[x] &lt; dep[y];&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">upper</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; x, <span class="keyword">const</span> <span class="keyword">int</span>&amp; y)</span> </span>&#123;<span class="keyword">return</span> cmp(x, y) ? x : y;&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">lca_init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	log2_floor[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= euler_clock; ++i) log2_floor[i] = log2_floor[i &gt;&gt; <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= log2_floor[euler_clock]; ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j + (<span class="number">1</span> &lt;&lt; i) ^ euler_clock + <span class="number">1</span>; ++j)</span><br><span class="line">			st[j][i] = upper(st[j][i - <span class="number">1</span>], st[j + (<span class="number">1</span> &lt;&lt; i - <span class="number">1</span>)][i - <span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (u == v) <span class="keyword">return</span> u;</span><br><span class="line">	u = euler[u];</span><br><span class="line">	v = euler[v];</span><br><span class="line">	<span class="keyword">if</span> (u &gt; v) swap(u, v);</span><br><span class="line">	<span class="keyword">int</span> temp = log2_floor[++v - u];</span><br><span class="line">	<span class="keyword">return</span> upper(st[u][temp], st[v - (<span class="number">1</span> &lt;&lt; temp)][temp]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/15/Codeforces Global Round 1 (TBC)/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1957,192 +2139,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/Educational Codeforces Round 58 (Rated for Div. 2)/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MAOoo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MAOoo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/17/Educational Codeforces Round 58 (Rated for Div. 2)/" class="post-title-link" itemprop="url">Educational Codeforces Round 58 (Rated for Div. 2)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-17 22:07:58 / Modified: 22:16:45" itemprop="dateCreated datePublished" datetime="2019-01-17T22:07:58+08:00">2019-01-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://codeforces.com/contest/1101" target="_blank" rel="noopener">Educational Codeforces Round 58 (Rated for Div. 2)</a></p>
-<h2 id="A-Minimum-Integer"><a href="#A-Minimum-Integer" class="headerlink" title="A. Minimum Integer"></a>A. Minimum Integer</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>输出不在$~[l,~r]~$内的$~d~$的最小整数倍。</p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> q;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; q;</span><br><span class="line">	<span class="keyword">while</span> (q--) &#123;</span><br><span class="line">		<span class="keyword">long</span> <span class="keyword">long</span> l, r, d;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; l &gt;&gt; r &gt;&gt; d;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; ((d &lt; l ? <span class="number">0</span> : r / d) + <span class="number">1</span>) * d &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="B-Accordion"><a href="#B-Accordion" class="headerlink" title="B. Accordion"></a>B. Accordion</h2><h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>输出给定字符串满足左边为$~\text{[:}~$右边为$~\text{:]}~$中间为任意（可以没有）数量的$~\text{|}~$的子序列最大长度。</p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>水题。</p>
-<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">string</span> str;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; str;</span><br><span class="line">	<span class="keyword">int</span> left = <span class="number">-1</span>, right = <span class="number">-1</span>, size = str.size();</span><br><span class="line">	<span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ size; ++i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (str[i] == <span class="string">'['</span>) flag = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">if</span> (str[i] == <span class="string">':'</span> &amp;&amp; flag) &#123;</span><br><span class="line">			left = i;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	flag = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; ~i; --i) &#123;</span><br><span class="line">		<span class="keyword">if</span> (str[i] == <span class="string">']'</span>) flag = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">if</span> (str[i] == <span class="string">':'</span> &amp;&amp; flag) &#123;</span><br><span class="line">			right = i;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (!~left || !~ right || left &gt;= right) <span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">4</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = left + <span class="number">1</span>; i ^ right; ++i) <span class="keyword">if</span> (str[i] == <span class="string">'|'</span>) ++res;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="C-Division-and-Union"><a href="#C-Division-and-Union" class="headerlink" title="C. Division and Union"></a>C. Division and Union</h2><h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>将$~n~$个给定的闭区间划分到两个集合之中，使得在这两个集合之中分别任选一个闭区间，它们不交。输出任意一种划分或者不存在。</p>
-<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>首先，如果有合法的划分，当且仅当这两个集合分别并起来得到的两个数集不交。于是合法划分不存在当前仅当所有区间并起来还是一个区间。对所有的区间按左端点升序，先将第$~1~$个区间划分给集合$~1~$，然后按顺序看当前区间与第$~1~$个区间是否有交。如果有交则划分给集合$~1~$同时与第$~1~$个区间并起来。如果没有则后面所有的区间都划分给集合$~2~$，这样所有在集合$~2~$区间里的数都大于在集合$~1~$区间里的数。</p>
-<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">	<span class="keyword">while</span> (t--) &#123;</span><br><span class="line">		<span class="keyword">int</span> n;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">		<span class="built_in">vector</span>&lt;pair&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt;&gt; seg(n);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i ^ n; ++i) &#123;</span><br><span class="line">			<span class="built_in">cin</span> &gt;&gt; seg[i].first.first &gt;&gt; seg[i].first.second;</span><br><span class="line">			seg[i].second = i;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(seg.begin(), seg.end());</span><br><span class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res(n);</span><br><span class="line">		<span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, back = seg.front().first.second; i ^ n; ++i) &#123;</span><br><span class="line">			<span class="keyword">if</span> (seg[i].first.first &lt;= back) &#123;</span><br><span class="line">				back = max(back, seg[i].first.second);</span><br><span class="line">				res[seg[i].second] = <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				flag = <span class="literal">false</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j ^ n; ++j) res[seg[j].second] = <span class="number">2</span>;</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; res.front();</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j ^ n; ++j) <span class="built_in">cout</span> &lt;&lt; <span class="string">' '</span> &lt;&lt; res[j];</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (flag) <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="D-GCD-Counting"><a href="#D-GCD-Counting" class="headerlink" title="D. GCD Counting"></a>D. GCD Counting</h2><h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给定一颗带点值的树，找出最长的简单路径满足路径上所有点值不互质。<br>数据范围$~1\leq n\leq2\cdot10^5,~1\leq a\leq2\cdot10^5~$。</p>
-<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>对于最长的合法路径，必存在一个质数$~p~$是路径上所有点值的公因数。注意到点值的数据范围，可以先预处理所有数字的所有质因子，这一步的时间复杂度为$~O(a\log a)~$。树形$~\text{DP}~$。任取一个点为根节点，考虑在以节点$~u~$为根的子树上经过$~u~$且有公因数$~p~$的最长路径$~cal[u][p]~$。先计算以$~u~$为一个端点，另一端点在子树中且公因数为$~p~$的最长路径路径$~len[u][p]~$。那么对于$~u~$的所有儿子$~v~$，在$~\text{dfs}~$过程中用$~len[v][p]~$的最大值更新$~len[u][p]~$，最大值和次大值更新$~cal[u][p]~$。为节省空间，注意到$~a~$的不同质因子个数很少，可以用$~\text{map}~$来维护$~len~$，且不用记录$~cal~$直接更新答案即可。总时间复杂度为$~O(a\cdot\log a+n\cdot\log a\cdot\log\log a)~$。<del>事实上可以写成$~O((n+a)\log a)~$，但是没有必要。</del></p>
-<h3 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn], res, max1[maxn], max2[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; adj[maxn], prime[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; vis(maxn);</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; len[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> pa)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : adj[u]) <span class="keyword">if</span> (v ^ pa) dfs(v, u);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> p : prime[a[u]]) max1[p] = max2[p] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> v : adj[u]) <span class="keyword">if</span> (v ^ pa) <span class="keyword">for</span> (<span class="keyword">auto</span> p : prime[a[u]]) &#123;</span><br><span class="line">		max2[p] = max(max2[p], len[v][p]);</span><br><span class="line">		<span class="keyword">if</span> (max1[p] &lt; max2[p]) swap(max1[p], max2[p]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (a[u] == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">int</span> cal = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> p : prime[a[u]]) &#123;</span><br><span class="line">		cal = max(cal, max1[p] + max2[p]);</span><br><span class="line">		len[u][p] = max1[p] + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	res = max(res, ++cal);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i ^ maxn; ++i) <span class="keyword">if</span> (!vis[i])</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; maxn; j += i) &#123;</span><br><span class="line">			vis[j] = <span class="literal">true</span>;</span><br><span class="line">			prime[j].push_back(i);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ n; ++i) &#123;</span><br><span class="line">		<span class="keyword">int</span> u, v;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		adj[u].push_back(v);</span><br><span class="line">		adj[v].push_back(u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="E-Polycarp’s-New-Job"><a href="#E-Polycarp’s-New-Job" class="headerlink" title="E. Polycarp’s New Job"></a>E. Polycarp’s New Job</h2><h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>一共$~n~$次添加或者询问：</p>
-<ol>
-<li>加入一个大小为$~x\times y~$的矩形。</li>
-<li>询问是否所有矩形都能被$~h\times w~$的矩形包含。<br>数据范围$~2\leq n\leq5\cdot10^5,~1\leq x,~y,~h,~w\leq10^9~$。</li>
-</ol>
-<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>首先离散化。注意到矩形可以翻转，不妨让$~x\geq y,~h\geq w~$。那么题目变成了平面加点和询问平面内所有点是否都在$~[0,~h]\times[0,~w]~$或$~[0,~w]\times[0,~h]~$内。空间范围显然不允许使用二维树状数组，但是可以将询问等价为所有点都在$~[0,~h]\times[0,~h]~$内且不在$~(w,~\infty)\times(w,~\infty)~$内。那么用两个一维树状数组维护即可。总时间复杂度$~O(n\log n)~$。数据范围过大，注意$~\text{IO}~$速度。</p>
-<h3 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">	<span class="built_in">cin</span>.tie(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Query</span> &#123;</span></span><br><span class="line">		<span class="keyword">char</span> op;</span><br><span class="line">		<span class="keyword">int</span> x, y;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">vector</span>&lt;Query&gt; query(n);</span><br><span class="line">	<span class="built_in">set</span>&lt;<span class="keyword">int</span>&gt; num;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; qry : query) &#123;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; qry.op &gt;&gt; qry.x &gt;&gt; qry.y;</span><br><span class="line">		<span class="keyword">if</span> (qry.x &lt; qry.y) swap(qry.x, qry.y);</span><br><span class="line">		num.insert(qry.x);</span><br><span class="line">		num.insert(qry.y);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; to;</span><br><span class="line">	<span class="keyword">int</span> maxn = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> x : num) to[x] = maxn++;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; bit1(maxn, <span class="number">0</span>), bit2(maxn, <span class="number">0</span>);</span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> lowbit(x) (x &amp; -x)</span></span><br><span class="line">	<span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> qry : query) &#123;</span><br><span class="line">		qry.x = to[qry.x];</span><br><span class="line">		qry.y = to[qry.y];</span><br><span class="line">		<span class="keyword">if</span> (qry.op == <span class="string">'+'</span>) &#123;</span><br><span class="line">			++cnt;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = qry.x; i &lt; maxn; i += lowbit(i)) ++bit1[i];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = qry.y; i; i -= lowbit(i)) ++bit2[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = qry.x; i; i -= lowbit(i)) sum += bit1[i];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = qry.y + <span class="number">1</span>; i &lt; maxn; i += lowbit(i)) sum -= bit2[i];</span><br><span class="line">			<span class="keyword">if</span> (sum == cnt) <span class="built_in">cout</span> &lt;&lt; <span class="string">"YES\n"</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"NO\n"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="F-Trucks-and-Cities"><a href="#F-Trucks-and-Cities" class="headerlink" title="F. Trucks and Cities"></a>F. Trucks and Cities</h2><h3 id="题目大意-5"><a href="#题目大意-5" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>坐标轴上有$~n~$个城市和$~m~$趟卡车。给定城市坐标$~a~$，卡车的起点$~s~$、终点$~f~$、每公里耗油$~c~$和可中途加油次数$~r~$。问油箱的最小容量。</p>
-<h3 id="题解-5"><a href="#题解-5" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>动态规划。记$~dp[r][s][f]~$为最优策略下卡车从$~a_s~$到$~a_f~$最多停靠加油$~r~$次的最长的两次停靠城市距离。那么答案则是$~\max(dp[r][s][f]\cdot c)~$。通过枚举最后一次停靠城市$~a_l~$，有状态转移式</p>
-<script type="math/tex; mode=display">dp[r][s][f]=\min_{s< t< f}\max(dp[r-1][s][t],~a[f]-a[t])</script><p>此时总时间复杂度为$~O(n^4)~$显然会$~\text{tle}~$。但是不难发现在固定$~r~$和$~s~$后，最优转移点$~t~$随着$~f~$递增，所以双指针优化后时间复杂度变为$~O(n^3)~$。但是直接开$~O(n^3)~$的三位数组空间复杂度很危险（擦着边其实可以过），那么对于所有的输入$~(s,~f,~c,~r)~$离线操作，按$~r~$升序，这样$~dp~$的$~r~$维度可以滚动数组实现。总时间复杂度为$~O(n^3+m\log m)~$，空间复杂度为$~O(n^2+m)~$。</p>
-<h3 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a(n + <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp0(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>));</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp1(n + <span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>));</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt;= n; ++j)</span><br><span class="line">			dp0[i][j] = a[j] - a[i];</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">Query</span> &#123;</span><span class="keyword">int</span> s, f, c, r;&#125;;</span><br><span class="line">	<span class="built_in">vector</span>&lt;Query&gt; query(m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span>&amp; qry : query) <span class="built_in">cin</span> &gt;&gt; qry.s &gt;&gt; qry.f &gt;&gt; qry.c &gt;&gt; qry.r;</span><br><span class="line">	sort(query.begin(), query.end(), [](Query a, Query b) &#123;<span class="keyword">return</span> a.r &lt; b.r;&#125;);</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> now = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> qry : query) &#123;</span><br><span class="line">		<span class="keyword">while</span> (now ^ qry.r) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j) <span class="keyword">for</span> (<span class="keyword">int</span> k = j, l = j; k &lt;= n; ++k) &#123;</span><br><span class="line">				<span class="keyword">while</span> (l &lt; k &amp;&amp; max(dp0[j][l], a[k] - a[l]) &gt; max(dp0[j][l + <span class="number">1</span>], a[k] - a[l + <span class="number">1</span>])) ++l;</span><br><span class="line">				dp1[j][k] = max(dp0[j][l], a[k] - a[l]);</span><br><span class="line">			&#125;</span><br><span class="line">			swap(dp0, dp1);</span><br><span class="line">			++now;</span><br><span class="line">		&#125;</span><br><span class="line">		res = max(res, <span class="number">1L</span>L * qry.c * dp0[qry.s][qry.f]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="G-Zero-XOR-Subset-less"><a href="#G-Zero-XOR-Subset-less" class="headerlink" title="G. (Zero XOR Subset)-less"></a>G. (Zero XOR Subset)-less</h2><h3 id="题目大意-6"><a href="#题目大意-6" class="headerlink" title="题目大意"></a><strong>题目大意</strong></h3><p>给定数列$~a_1,~a_2,~\dots,~a_n~$，要划分为若干个连续子序列$~A_1,~A_2,~\dots,~A_k~$。令每个子序列的$~\text{xor}~$和记为$~\alpha_i,~i=1,~2,~\dots,~k~$，集合$~S={\alpha_1,~\alpha_2,~\dots,~\alpha_k}~$。问满足$~S~$的所有非空子集的$~\text{xor}~$和互不相同的最大$~k~$或不存在。<br>数据范围$~1\leq n\leq2\cdot10^5,~0\leq a\leq10^9~$。</p>
-<h3 id="题解-6"><a href="#题解-6" class="headerlink" title="题解"></a><strong>题解</strong></h3><p>记录$~a_1,~a_2,~\dots,~a_n~$的前缀$~\text{xor}~$和$~pre_1,~pre_2,~\dots,~pre_n~$，显然如果$~pre_n=0~$则答案不存在，反之存在。再考虑合法集合$~S~$，记$~\alpha_1,~\alpha_2,~\dots,~\alpha_k~$的前缀$~\text{xor}~$和为$~\beta_1,~\beta_2,~\dots,~\beta_k~$，则不难发现$~\bar{S}={\beta_1,~\beta_2,~\dots,~\beta_k}~$也是合法集合。且根据定义$~\beta~$也是$~a~$的前缀$~\text{xor}~$和，所以$~\bar{S}\subseteq{pre_1,~pre_2,~\dots,~pre_n}~$。对于所有正整数，考虑二进制表示的$~01~$向量，可以等价于$~\Bbb{Z}_2~$上的某向量空间的向量，合法集合可以看作是这个向量空间上的一个线性无关组。这是一个线性基问题，答案是包含$~pre~$的最小空间的维数。时间复杂度为$~O(n\log a)~$。</p>
-<h3 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a><strong>代码</strong></h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a(n), base;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; a.front();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i ^ n; ++i) <span class="built_in">cin</span> &gt;&gt; a[i], a[i] ^= a[i - <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">if</span> (!a.back()) <span class="keyword">return</span> <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>, <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">auto</span> e : a) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> v : base) e = min(e, e ^ v);</span><br><span class="line">		<span class="keyword">if</span> (e) base.push_back(e);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; base.size() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2190,7 +2186,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">43</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
